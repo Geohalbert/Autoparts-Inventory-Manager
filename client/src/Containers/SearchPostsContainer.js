@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {setSearchText} from "../actions";
-import SearchPosts from "../components/SearchPosts";
+import SearchPosts from "../Components/SearchPosts";
 
 
 function mapDispatchToProps(dispatch){

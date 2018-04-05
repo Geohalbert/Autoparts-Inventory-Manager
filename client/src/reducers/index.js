@@ -7,22 +7,14 @@ function posts(state = [], action) {
   return state;
 }
 
-function post(state = {}, action) {
-  if (action.type === "GET_POST_DONE") {
+function post(state={}, action) {
+  if (action.type === "POST_LOADED") {
     return action.value;
   }
   return state;
 }
-
-function searchText(state="", action){
-  if(action.type === "SET_SEARCH_TEXT"){
-    return action.value;
-  }
-  return state;
-}
-
 
 const rootReducer = combineReducers({
-  posts,post,searchText
+  posts, post
 });
 export default rootReducer;

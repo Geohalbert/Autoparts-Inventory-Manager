@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Posts from "../components/Posts";
+import Posts from "../Components/Posts";
 import {
   removePost
 } from "../actions";

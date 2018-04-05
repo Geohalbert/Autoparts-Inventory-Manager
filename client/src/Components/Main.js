@@ -1,6 +1,6 @@
 import React from "react";
-import PostsContainer from "../containers/PostsContainer";
-import CreatePostsContainer from "../containers/CreatePostsContainer";
+import PostsContainer from "../Containers/PostsContainer";
+import CreatePostContainer from "../Containers/CreatePostContainer";
 
 function Posts() {
   return (
@@ -10,9 +10,9 @@ function Posts() {
         <PostsContainer />
       </div>
       <div style={{float: "left", width: "49%"}}>
-        <CreatePostsContainer />
+        <CreatePostContainer />
       </div>
     </div>
   );
 }
-export default Contacts;
+export default Posts;

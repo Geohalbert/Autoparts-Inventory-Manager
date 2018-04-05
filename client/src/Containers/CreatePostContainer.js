@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import CreatePost from "../components/CreatePost";
+import CreatePost from "../Components/CreatePost";
 import {createPost} from "../actions";
 
 function mapStateToProps(state) {

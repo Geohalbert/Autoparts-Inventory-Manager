@@ -5,7 +5,7 @@ class CreatePost extends React.Component {
     super();
     this.state = {
       post: {
-        "_id": "",
+        "id": "",
         "location": "",
         "item": "",
         "price": "",
@@ -48,14 +48,14 @@ class CreatePost extends React.Component {
               });
             }} />
           </div>
-          <div>
+          {/* <div>
             Location: <input onChange={(e) => {
               const post = {location: e.target.value};
               this.setState({
                 post: Object.assign(this.state.post,post)
               });
             }} />
-          </div>
+          </div> */}
           <div>
             Seller: <input onChange={(e) => {
               const post = {seller: e.target.value};

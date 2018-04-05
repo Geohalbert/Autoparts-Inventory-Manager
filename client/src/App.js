@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import Main from "./containers/MainContainer";
-import Post from "./containers/PostContainer";
-import CreatePost from "./containers/CreatePostContainer";
+import Main from "./Containers/MainContainer";
+import Post from "./Containers/PostContainer";
+import CreatePost from "./Containers/CreatePostContainer";
 import {Link} from "react-router-dom";
-import {Button} from "semantic-ui-react";
+// import {Button} from "semantic-ui-react";
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 
 class App extends Component {
@@ -20,13 +20,13 @@ class App extends Component {
         <div>
         <center>
           <h1>Post Catalog</h1>
-          <Link to="/posts"><Button>List Posts</Button></Link>
-          <Link to="/createpost"><Button>Create Post</Button></Link>
+          <Link to="/posts"><a>List Posts</a></Link>
+          <Link to="/createPost"><a>Create Post</a></Link>
         </center>
           <Switch>
             <Route path="/post/:id" component={Post} />
             <Route path="/posts" component={Main} />
-            <Route path="/createpost" component={CreatePost} />
+            <Route path="/createPost" component={CreatePost} />
           </Switch>
         </div>
       </BrowserRouter>

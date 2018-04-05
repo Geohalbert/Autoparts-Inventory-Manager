@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Post from "../components/Post";
+import Post from "../Components/Post";
 import {getPost} from "../actions";
 
 function mapStateToProps(state) {
