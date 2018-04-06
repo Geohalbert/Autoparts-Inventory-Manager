@@ -3,15 +3,15 @@ export function loadPosts() {
     fetch("/posts")
     .then( (response) => {
       return response.json();
-    }).catch(err => {console.log(err)})
-    .then((list) => dispatch(postsLoaded(list))
-    ).catch(err => {console.log(err)})
+    }).then((posts) => {
+      dispatch(postsLoaded(posts));
+    });
   };
 }
-function postsLoaded(list) {
+function postsLoaded(posts) {
   return {
     type: "POSTS_LOADED",
-    value: list
+    value: posts
   };
 }
 export function loadPost(id) {
@@ -28,16 +28,31 @@ function postLoaded(pos) {
     value: pos
   };
 }
-export function createPost(newPost) {
+export function createPost(p) {
   return function (dispatch) {
     fetch("/posts", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(newPost)
+      body: JSON.stringify(p)
     }).then(() => dispatch(loadPosts()));
   };
 }
-
+export function getPost(id) {
+  return function (dispatch) {
+    fetch("/posts/" +id)
+    .then( (response) => {
+      return response.json();
+    }).then((post) => {
+      dispatch(getPostDone(post));
+    });
+  };
+}
+function getPostDone(post) {
+  return {
+    type: "GET_POST_DONE",
+    value: post
+  };
+}
 
 
 export function setSearchText(txt){

@@ -9,4 +9,4 @@ router.posts("/posts", create);
 router.put("/post/:id", update);
 router.delete("/post/:id", remove);
 
-export default PostRoutes;
+export default router;

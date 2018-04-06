@@ -4,12 +4,12 @@ import Main from "./Containers/MainContainer";
 import Post from "./Containers/PostContainer";
 import CreatePost from "./Containers/CreatePostContainer";
 import {Link} from "react-router-dom";
-// import {Button} from "semantic-ui-react";
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 
 class App extends Component {
   constructor() {
     super();
+    this.state = {users: []};
   }
   componentDidMount() {
     this.props.loadPosts();
@@ -19,9 +19,9 @@ class App extends Component {
       <BrowserRouter>
         <div>
         <center>
-          <h1>Post Catalog</h1>
-          <Link to="/posts"><a>List Posts</a></Link>
-          <Link to="/createPost"><a>Create Post</a></Link>
+          <h1>Greg's List</h1>
+          <Link to="/posts"><b>List Posts</b></Link>
+          <Link to="/createPost"><b>Create Post</b></Link>
         </center>
           <Switch>
             <Route path="/post/:id" component={Post} />
