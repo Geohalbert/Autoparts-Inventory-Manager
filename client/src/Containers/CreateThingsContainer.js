@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
-import CreatePost from "../Components/CreatePost";
+import CreateThings from "../Components/CreateThings";
 import {createPost} from "../actions";
 
-function mapStateToProps(state) {
-  return {
-    posts: state.posts,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     posts: state.posts,
+//   };
+// }
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -16,4 +16,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CreatePost);
+export default connect(null,mapDispatchToProps)(CreateThings);

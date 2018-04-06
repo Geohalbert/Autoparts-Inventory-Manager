@@ -14,6 +14,22 @@ function postsLoaded(posts) {
     value: posts
   };
 }
+export function getPost(id) {
+  return function (dispatch) {
+    fetch("/posts/" +id)
+    .then( (response) => {
+      return response.json();
+    }).then((post) => {
+      dispatch(getPostDone(post));
+    });
+  };
+}
+function getPostDone(post) {
+  return {
+    type: "GET_POST_DONE",
+    value: post
+  };
+}
 export function loadPost(id) {
   return function (dispatch) {
     fetch("/post/" +id)
@@ -35,22 +51,6 @@ export function createPost(p) {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(p)
     }).then(() => dispatch(loadPosts()));
-  };
-}
-export function getPost(id) {
-  return function (dispatch) {
-    fetch("/posts/" +id)
-    .then( (response) => {
-      return response.json();
-    }).then((post) => {
-      dispatch(getPostDone(post));
-    });
-  };
-}
-function getPostDone(post) {
-  return {
-    type: "GET_POST_DONE",
-    value: post
   };
 }
 

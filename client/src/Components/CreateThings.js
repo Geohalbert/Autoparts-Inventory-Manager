@@ -1,15 +1,14 @@
 import React from "react";
 
-class CreatePost extends React.Component {
+class CreateThings extends React.Component {
   constructor() {
     super();
     this.state = {
       post: {
-        "id": "",
-        "location": "",
-        "item": "",
-        "price": "",
-        "seller": ""
+        location: "",
+        item: "",
+        price: "",
+        seller: ""
       }
     };
   }
@@ -17,21 +16,21 @@ class CreatePost extends React.Component {
     return (
       <div>
         <div>
-          <h1>Posts</h1>
+          <h1>Sell Something!</h1>
           <form onSubmit={(e) => {
             e.preventDefault();
             if (this.props.createPost) {
               this.props.createPost(this.state.post);
             }
           }}>
-          <div>
+          {/* <div>
             Id: <input onChange={(e) => {
-              const post = {id: e.target.value};
+              const post = {_id: e.target.value};
               this.setState({
                 post: Object.assign(this.state.post,post)
               });
             }} />
-          </div>
+          </div> */}
           <div>
             Item: <input onChange={(e) => {
               const post = {item: e.target.value};
@@ -56,14 +55,6 @@ class CreatePost extends React.Component {
               });
             }} />
           </div>
-          {/* <div>
-            Location: <input onChange={(e) => {
-              const post = {location: e.target.value};
-              this.setState({
-                post: Object.assign(this.state.post,post)
-              });
-            }} />
-          </div> */}
           <div>
             Seller: <input onChange={(e) => {
               const post = {seller: e.target.value};
@@ -79,4 +70,4 @@ class CreatePost extends React.Component {
     );
   }
 }
-export default CreatePost;
+export default CreateThings;

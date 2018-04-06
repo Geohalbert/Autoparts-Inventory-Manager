@@ -1,8 +1,8 @@
 import React from "react";
 import PostsContainer from "../Containers/PostsContainer";
-import CreatePostContainer from "../Containers/CreatePostContainer";
+import CreateThingsContainer from "../Containers/CreateThingsContainer";
 
-function Posts() {
+function Main() {
   return (
     <div>
       <div style={{float: "left", width: "49%"}}>
@@ -10,9 +10,9 @@ function Posts() {
         <PostsContainer />
       </div>
       <div style={{float: "left", width: "49%"}}>
-        <CreatePostContainer />
+        <div><CreateThingsContainer /></div>
       </div>
     </div>
   );
 }
-export default Posts;
+export default Main;

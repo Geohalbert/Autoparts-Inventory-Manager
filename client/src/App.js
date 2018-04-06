@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
-import Main from "./Containers/MainContainer";
+import Main from "./Components/Main";
 import Post from "./Containers/PostContainer";
-import CreatePost from "./Containers/CreatePostContainer";
+import CreateThings from "./Containers/CreateThingsContainer";
 import {Link} from "react-router-dom";
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {users: []};
   }
   componentDidMount() {
     this.props.loadPosts();
@@ -25,8 +24,9 @@ class App extends Component {
         </center>
           <Switch>
             <Route path="/post/:id" component={Post} />
-            <Route path="/posts" component={Main} />
-            <Route path="/createPost" component={CreatePost} />
+            <Route path="/" component={Main} />
+            {/* <Route path="/posts" component={Main} />
+            <Route path="/createPost" component={CreatePost} /> */}
           </Switch>
         </div>
       </BrowserRouter>

@@ -1,72 +1,144 @@
 export default [
   {
-    "id": "78945",
+    "_id": 1,
     "location": "Austin",
     "item": "monkey",
     "price": "20",
     "seller": "Ben"
   },
   {
-    "id": "45612",
+    "_id": 2,
     "location": "Austin",
     "item": "sausage",
     "price": "1",
     "seller": "Ben"
   },
   {
-    "id": "12345",
+    "_id": 3,
     "location": "Austin",
     "item": "dog",
     "price": "0",
     "seller": "Thibeault"
   },
   {
-    "id": "98765",
+    "_id": 4,
     "location": "Houston",
     "item": "glasses",
     "price": "10",
     "seller": "Karen"
   },
   {
-    "id": "65432",
+    "_id": 5,
     "location": "Houston",
     "item": "towel",
-    "price": "100",
+    "price": 100,
     "seller": "Mikey"
   },
   {
-    "id": "32154",
+    "_id": 6,
     "location": "Dallas",
     "item": "magic",
-    "price": "5",
+    "price": 5,
     "seller": "Tony Romo"
   },
   {
-    "id": "74125",
+    "_id": 7,
     "location": "Dallas",
     "item": "lipstick",
-    "price": "10",
+    "price": 10,
     "seller": "Benny Lee"
   },
   {
-    "id": "96325",
+    "_id": 8,
     "location": "Dallas",
     "item": "cat",
-    "price": "5",
+    "price": 5,
     "seller": "Nerney"
   },
   {
-    "id": "14785",
+    "_id": 9,
     "location": "Midland",
     "item": "oil",
-    "price": "50",
+    "price": 50,
     "seller": "Cletis Redneck"
   },
   {
-    "id": "36985",
+    "_id": 10,
     "location": "Odessa",
     "item": "barrel",
-    "price": "6",
+    "price": 6,
     "seller": "Cletis Redneck Jr."
   }
 ];
+
+// {
+//   "id": 78945,
+//   "location": "Austin",
+//   "item": "monkey",
+//   "price": 20,
+//   "seller": "Ben"
+// },
+// {
+//   "id": 45612,
+//   "location": "Austin",
+//   "item": "sausage",
+//   "price": 1,
+//   "seller": "Ben"
+// },
+// {
+//   "id": 12345,
+//   "location": "Austin",
+//   "item": "dog",
+//   "price": 0,
+//   "seller": "Thibeault"
+// },
+// {
+//   "id": 98765,
+//   "location": "Houston",
+//   "item": "glasses",
+//   "price": 10,
+//   "seller": "Karen"
+// },
+// {
+//   "id": 65432,
+//   "location": "Houston",
+//   "item": "towel",
+//   "price": 100,
+//   "seller": "Mikey"
+// },
+// {
+//   "id": 32154,
+//   "location": "Dallas",
+//   "item": "magic",
+//   "price": 5,
+//   "seller": "Tony Romo"
+// },
+// {
+//   "id": 74125,
+//   "location": "Dallas",
+//   "item": "lipstick",
+//   "price": 10,
+//   "seller": "Benny Lee"
+// },
+// {
+//   "id": 96325,
+//   "location": "Dallas",
+//   "item": "cat",
+//   "price": 5,
+//   "seller": "Nerney"
+// },
+// {
+//   "id": 14785,
+//   "location": "Midland",
+//   "item": "oil",
+//   "price": 50,
+//   "seller": "Cletis Redneck"
+// },
+// {
+//   "id": 36985,
+//   "location": "Odessa",
+//   "item": "barrel",
+//   "price": 6,
+//   "seller": "Cletis Redneck Jr."
+// }
+// ];

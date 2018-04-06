@@ -1,12 +1,14 @@
 import express from "express";
+// import PostModel from "../models/ContactModel";
+// import {list,show,create,update,remove} from "../controllers/ContactController";
+import {list,show,create} from "../Controllers/PostController";
+
 const router = express.Router();
-import {list,show,create,update,remove} from "../Controllers/PostController";
-import PostModel from "../Models/PostModel";
 
 router.get("/posts", list);
-router.get("/post/:id", show);
-router.posts("/posts", create);
-router.put("/post/:id", update);
-router.delete("/post/:id", remove);
+router.get("/posts/:id", show);
+router.post("/posts", create);
+// router.put("/contacts/:id", update);
+// router.delete("/contacts/:id", remove);
 
 export default router;

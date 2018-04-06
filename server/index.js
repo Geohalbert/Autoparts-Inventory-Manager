@@ -1,11 +1,11 @@
 import express from "express";
-import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import PostRoutes from "./Routes/PostRoutes";
 
+import mongoose from "mongoose";
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://halsthrowaway:goobagabba1@ds235239.mlab.com:35239/checkpoint2");
+mongoose.connect("mongodb://geohalbert:4ghhuFff@ds153978.mlab.com:53978/tonyromo");
 
 const app = express();
 app.use(bodyParser.json());

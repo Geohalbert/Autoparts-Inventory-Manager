@@ -1,24 +1,19 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
-  id: {
-    required: true,
-    type: String
+  _id: {
+    type: Number
   },
-  seller: {
-    required: true,
+  location: {
     type: String
   },
   item: {
-    required: true,
-    type: String
-  },
-  location: {
-    required: true,
     type: String
   },
   price: {
-    required: true,
+    type: String
+  },
+  seller: {
     type: String
   }
 });
