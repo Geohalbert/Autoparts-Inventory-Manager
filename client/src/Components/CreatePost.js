@@ -25,6 +25,14 @@ class CreatePost extends React.Component {
             }
           }}>
           <div>
+            Id: <input onChange={(e) => {
+              const post = {id: e.target.value};
+              this.setState({
+                post: Object.assign(this.state.post,post)
+              });
+            }} />
+          </div>
+          <div>
             Item: <input onChange={(e) => {
               const post = {item: e.target.value};
               this.setState({

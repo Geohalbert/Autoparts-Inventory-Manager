@@ -16,7 +16,7 @@ function postsLoaded(posts) {
 }
 export function loadPost(id) {
   return function (dispatch) {
-    fetch("/post/${id}")
+    fetch("/post/" +id)
     .then( res => res.json() )
     .then( pos => dispatch(postLoaded(pos)))
     .catch(err => {console.log(err)})
