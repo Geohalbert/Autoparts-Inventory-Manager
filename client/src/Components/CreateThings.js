@@ -23,14 +23,6 @@ class CreateThings extends React.Component {
               this.props.createPost(this.state.post);
             }
           }}>
-          {/* <div>
-            Id: <input onChange={(e) => {
-              const post = {_id: e.target.value};
-              this.setState({
-                post: Object.assign(this.state.post,post)
-              });
-            }} />
-          </div> */}
           <div>
             Item: <input onChange={(e) => {
               const post = {item: e.target.value};

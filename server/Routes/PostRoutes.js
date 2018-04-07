@@ -1,5 +1,5 @@
 import express from "express";
-// import PostModel from "../models/ContactModel";
+import PostModel from "../Models/PostModel";
 // import {list,show,create,update,remove} from "../controllers/ContactController";
 import {list,show,create} from "../Controllers/PostController";
 

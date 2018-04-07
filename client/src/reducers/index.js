@@ -7,7 +7,7 @@ function posts(state = [], action) {
   return state;
 }
 
-function post(state={}, action) {
+function post(state = {}, action) {
   if (action.type === "POST_LOADED") {
     return action.value;
   }

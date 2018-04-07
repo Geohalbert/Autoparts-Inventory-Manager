@@ -30,20 +30,6 @@ function getPostDone(post) {
     value: post
   };
 }
-export function loadPost(id) {
-  return function (dispatch) {
-    fetch("/post/" +id)
-    .then( res => res.json() )
-    .then( pos => dispatch(postLoaded(pos)))
-    .catch(err => {console.log(err)})
-  }
-}
-function postLoaded(pos) {
-  return {
-    type: "POST_LOADED",
-    value: pos
-  };
-}
 export function createPost(p) {
   return function (dispatch) {
     fetch("/posts", {
@@ -53,7 +39,20 @@ export function createPost(p) {
     }).then(() => dispatch(loadPosts()));
   };
 }
-
+// export function loadPost(id) {
+//   return function (dispatch) {
+//     fetch("/post/" +id)
+//     .then( res => res.json() )
+//     .then( pos => dispatch(postLoaded(pos)))
+//     .catch(err => {console.log(err)})
+//   }
+// }
+// function postLoaded(pos) {
+//   return {
+//     type: "POST_LOADED",
+//     value: pos
+//   };
+// }
 
 export function setSearchText(txt){
   return {

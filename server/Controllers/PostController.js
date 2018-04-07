@@ -2,7 +2,7 @@ import PostModel from "../Models/PostModel";
 
 export const list = (req, res) => {
     PostModel.find({}).exec()
-    .then( list => res.json(list) );
+    .then( posts => res.json(posts) );
 };
 
 export const show = (req, res) => {
@@ -15,7 +15,7 @@ export const create = (req, res) => {
     .then( List => {
         const id = (List.length + 1);
         const post = new PostModel({
-            _id: id,
+            id,
             location: req.body.location,
             item: req.body.item,
             price: req.body.price,

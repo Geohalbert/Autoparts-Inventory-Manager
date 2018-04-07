@@ -3,7 +3,7 @@ import CollapsableMapper from "./CollapsableMapper";
 
 function Posts(props) {
   return (
-    <CollapsableMapper data={props.posts} path="post" field="seller" />
+    <CollapsableMapper data={props.posts} path="posts" field="seller" />
   );
 }
 export default Posts;

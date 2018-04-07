@@ -9,6 +9,10 @@ function mapDispatchToProps(dispatch) {
     loadPosts: function () {
       dispatch(loadPosts());
     },
+    getPost:function(post){
+          let action = getPost(post);
+          dispatch(action);
+        },
   };
 }
 

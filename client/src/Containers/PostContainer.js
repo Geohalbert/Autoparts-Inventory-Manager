@@ -4,7 +4,7 @@ import {getPost} from "../actions";
 
 function mapStateToProps(state) {
   return {
-    post: state.post
+    posts: state.posts
   };
 }
 

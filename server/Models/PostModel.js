@@ -5,15 +5,19 @@ const schema = new mongoose.Schema({
     type: Number
   },
   location: {
+   required: true,
     type: String
   },
   item: {
+    required: true,
     type: String
   },
   price: {
+    required: true,
     type: String
   },
   seller: {
+    required: true,
     type: String
   }
 });
