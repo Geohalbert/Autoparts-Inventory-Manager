@@ -14,9 +14,9 @@ function postsLoaded(posts) {
     value: posts
   };
 }
-export function getPost(_id) {
+export function getPost(id) {
   return function (dispatch) {
-    fetch("/posts/" + _id)
+    fetch("/posts/" +id)
     .then( (response) => {
       return response.json();
     }).then((post) => {

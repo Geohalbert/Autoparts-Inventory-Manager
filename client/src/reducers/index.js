@@ -2,14 +2,14 @@ import {combineReducers} from "redux";
 
 function posts(state = [], action) {
   if (action.type === "POSTS_LOADED") {
-    return action.value;
+    return action.posts;
   }
   return state;
 }
 
 function post(state = {}, action) {
   if (action.type === "POST_LOADED") {
-    return action.value;
+    return action.post;
   }
   return state;
 }
