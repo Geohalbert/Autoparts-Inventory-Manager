@@ -1,20 +1,32 @@
 import {combineReducers} from "redux";
 
-function posts(state = [], action) {
-  if (action.type === "POSTS_LOADED") {
-    return action.value;
+function players(state = [], action) {
+  if (action.type === "PLAYERS_LOADED") {
+    return action.players;
   }
   return state;
 }
 
-function post(state = {}, action) {
-  if (action.type === "POST_LOADED") {
-    return action.value;
+function player(state = {}, action) {
+  if (action.type === "PLAYER_LOADED") {
+    return action.player;
+  }
+  return state;
+}
+function games(state = [], action) {
+  if (action.type === "GAMES_LOADED") {
+    return action.games;
+  }
+  return state;
+}
+function game(state = {}, action) {
+  if (action.type === "GAME_LOADED") {
+    return action.game;
   }
   return state;
 }
 
 const rootReducer = combineReducers({
-  posts, post
+  players, player, games, game
 });
 export default rootReducer;
