@@ -4,14 +4,14 @@ import {getPost} from "../actions";
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts
+    post: state.post
   };
 }
 
 function mapDispatchToProps(dispatch){
     return {
-      getPost:function(post){
-            let action = getPost(post);
+      getPost:function(id){
+            const action = getPost(id);
             dispatch(action);
           },
     }

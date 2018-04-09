@@ -25,7 +25,28 @@ export const create = (req, res) => {
         .then( pos => res.json(pos) )
     });
 };
-
+// export const show = (req, res) => {
+//     PostModel.findOne({ id: req.params.id }).exec()
+//     .then( entry => res.json(entry) );
+// };
+//
+// export function create(req, res) {
+//     PostModel.find({}).exec()
+//     .then( (list) => {
+//         const id = (list.length + 1);
+//         const ent = new PostModel({
+//           _id: id,
+//           location: req.body.location,
+//           item: req.body.item,
+//           price: req.body.price,
+//           seller: req.body.seller
+//         });
+//         ent.save()
+//         .then((entry) => {
+//             return res.json(entry)
+//         })
+//     })
+// }
 export const update = (req, res) => {
     return res.send('WAT');
 };

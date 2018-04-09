@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import "./App.css";
-import Main from "./Components/Main";
+import Main from "./Containers/MainContainer";
+import {getPost,loadPosts} from "./actions";
 import Post from "./Containers/PostContainer";
 // import CreateThings from "./Containers/CreateThingsContainer";
 import {Link} from "react-router-dom";
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 
-class App extends Component {
+class App extends React.Component {
   constructor() {
     super();
-        // this.state = {posts: []};
   }
   componentDidMount() {
     this.props.loadPosts();
-    console.log("this.props: ",this.props);
+    console.log("getPost(4): ",getPost(4));
 
   }
   render() {

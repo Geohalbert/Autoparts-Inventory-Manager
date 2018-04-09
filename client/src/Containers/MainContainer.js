@@ -1,6 +1,6 @@
 import Main from "../Components/Main";
 import { connect } from "react-redux";
-import {loadPosts} from "../actions";
+import {loadPosts,getPost} from "../actions";
 
 
 

@@ -1,13 +1,13 @@
 export default [
   {
-    "id": 1,
+    "_id": 1,
     "location": "Austin",
     "item": "monkey",
     "price": "20",
     "seller": "Ben"
   },
   {
-    "id": 2,
+    "_id": 2,
     "location": "Austin",
     "item": "sausage",
     "price": "1",
