@@ -13,12 +13,13 @@ class CollapsableMapper extends Component {
       buttonText = "Hide";
       userDivs = this.props.data.map((d,i) => {
         return (
-          <div key={i}>
+          <div key={i} id="post">
             {d[this.props.field]}
-            {d[this.props.field1]}
-            {d[this.props.field2]}
-            {d[this.props.field3]}
+          <br />  {d[this.props.field1]}
+          <br />  {d[this.props.field2]}
+          <br />  {d[this.props.field3]}
             <Link to={"/" + this.props.path + "/" + d._id}> View </Link>
+            <Link to={"/" + this.props.path + "/" + d._id}> Remove </Link>
           </div>
         );
       });

@@ -39,3 +39,10 @@ export function createPost(p) {
     }).then(() => dispatch(loadPosts()));
   };
 }
+export function removePost(id) {
+  return function (dispatch) {
+    fetch("/posts/" + id, {
+      method: "DELETE"
+    }).then(() => dispatch(loadPosts()));
+  };
+}

@@ -36,5 +36,13 @@ export const update = (req, res) => {
 };
 
 export const remove = (req, res) => {
-  res.send('WAT');
+  PostModel.find({}).exec()
+  .then( List => {
+// get index of object with id:37
+var removeIndex = List.map(function(item) { return item.id; }).indexOf(req.params.id);
+
+// remove object
+List.splice(removeIndex, 1);
+  return res.json(List);
+});
 };
