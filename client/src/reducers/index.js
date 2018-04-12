@@ -2,19 +2,19 @@ import {combineReducers} from "redux";
 
 function posts(state = [], action) {
   if (action.type === "POSTS_LOADED") {
-    return action.posts;
+    return action.value;
   }
   return state;
 }
 
-function post(state = {}, action) {
-  if (action.type === "POST_LOADED") {
-    return action.post;
+function post(state = [], action) {
+  if (action.type === "GET_POST_DONE") {
+    return action.value;
   }
   return state;
 }
 
 const rootReducer = combineReducers({
-  posts, post
+  posts,post
 });
 export default rootReducer;

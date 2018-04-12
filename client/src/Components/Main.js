@@ -1,6 +1,6 @@
 import React from "react";
 import PostsContainer from "../Containers/PostsContainer";
-import CreateThingsContainer from "../Containers/CreateThingsContainer";
+import CreatePostsContainer from "../Containers/CreatePostsContainer";
 
 function Main() {
   return (
@@ -10,7 +10,7 @@ function Main() {
         <PostsContainer />
       </div>
       <div style={{float: "left", width: "49%"}}>
-        <div><CreateThingsContainer /></div>
+        <div><CreatePostsContainer /></div>
       </div>
     </div>
   );

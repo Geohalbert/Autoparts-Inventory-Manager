@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
     return {
-      getPost:function(id){
-            const action = getPost(id);
+      getPost:function(post){
+            const action = getPost(post);
             dispatch(action);
           },
     }
