@@ -31,18 +31,24 @@ export const create = (req, res) => {
   });
 };
 
-export const update = (req, res) => {
-  res.send('WAT');
-};
+// export const update = (req, res) => {
+//   res.send('WAT');
+// };
 
 export const remove = (req, res) => {
-  PostModel.find({}).exec()
-  .then( List => {
-// get index of object with id:37
-var removeIndex = List.map(function(item) { return item.id; }).indexOf(req.params.id);
-
-// remove object
-List.splice(removeIndex, 1);
-  return res.json(List);
-});
+  PostModel.findByIdAndRemove(req.params.id).exec()
+  .then( post => res.json(post) );
 };
+
+export const update = (req, res) => {
+  PostModel.findById(req.params.id).exec()
+  .then(post => {
+    post.location = req.body.location;
+    post.item = req.body.item;
+    post.condition = req.body.condition;
+    post.price = req.body.price;
+    post.seller = req.body.seller;
+    return post.save();
+  })
+  .then( post => res.json(post) );
+}

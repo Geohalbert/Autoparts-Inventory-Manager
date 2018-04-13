@@ -18,6 +18,7 @@ class CollapsableMapper extends Component {
           <br />  {d[this.props.field1]}
           <br />  {d[this.props.field2]}
           <br />  {d[this.props.field3]}
+          <br />  {d[this.props.field4]}
             <Link to={"/" + this.props.path + "/" + d._id}> View </Link>
             <Link to={"/" + this.props.path + "/" + d._id}> Remove </Link>
           </div>
