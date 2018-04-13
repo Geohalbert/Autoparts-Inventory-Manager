@@ -1,12 +1,31 @@
 import React from "react";
-import CollapsableMapper from "./CollapsableMapper";
-
+import {Link} from "react-router-dom";
 
 function Posts(props) {
+
+  let postDivs = null;
+  if (props.posts) {
+    postDivs = props.posts;
+  }
   // console.log(props.posts)
   return (
-    // console.log("from Posts Component - this.props.posts: ",this.props.posts)
-    <CollapsableMapper data={props.posts} path="posts" field="seller" field1="item" field2="price" field3="location" field4="_id" />
+    <div>
+      {postDivs.map((p,i) =>
+          <div key={i} id="post">
+          <br />  <div><b>Item:</b> {p.item}</div>
+          <br />  <div><b>Location: </b> {p.location}</div>
+          <br />  <div><b>Price:</b> {p.price}</div>
+          <br />  <div><b>Seller:</b> {p.seller}</div>
+            <Link to={"/posts/" + p._id}> View </Link>
+            <button onClick={
+              (e) => {
+                  props.removePost(p._id);
+              }
+            }>Delete</button>
+
+          </div>
+          )}
+    </div>
   );
 }
 export default Posts;

@@ -22,6 +22,10 @@ const schema = new mongoose.Schema({
   seller: {
     required: true,
     type: String
+  },
+  deleted: {
+    required: false,
+    type: Boolean
   }
 });
 

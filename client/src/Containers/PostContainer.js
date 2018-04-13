@@ -8,12 +8,11 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     return {
-      getPost:function(post){
-            const action = getPost(post);
-            dispatch(action);
-          },
+      getPost: function (id) {
+        dispatch(getPost(id));
+      }
     }
   }
 

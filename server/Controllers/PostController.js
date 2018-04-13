@@ -31,14 +31,29 @@ export const create = (req, res) => {
   });
 };
 
-// export const update = (req, res) => {
-//   res.send('WAT');
-// };
+
 
 export const remove = (req, res) => {
-  PostModel.findByIdAndRemove(req.params.id).exec()
-  .then( post => res.json(post) );
-};
+    PostModel.findByIdAndRemove(req.params.id).exec()
+    .then(posts => {
+        return res.json(posts);
+    });
+}
+
+// export const remove = (req, res) => {
+//   PostModel.find({}).exec()
+//   .then( List => {
+//     const post = List.map(function(item) { return item.id; }).indexOf(req.params.id);
+//     List.splice(removeIndex, 1);
+//   }
+//     const removeIndex = List.map(function(item) { return item.id; }).indexOf(req.params.id);
+//     List.splice(removeIndex, 1);
+//     //   return res.json(List);
+//   )
+//   .then( thisPost => { thisPost.remove() }).exec();
+//     .then.PostModel.find({}).exec()
+//     .then( p => res.json(p))
+// }
 
 export const update = (req, res) => {
   PostModel.findById(req.params.id).exec()

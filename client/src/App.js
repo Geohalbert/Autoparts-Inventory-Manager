@@ -22,7 +22,8 @@ class App extends Component {
         <div>
         <center>
           <h1>Greg's List</h1>
-          <Link to="/posts"><b>List Posts</b></Link>
+          <Link to="/"><b>Main</b></Link>
+          <br /> <Link to="/posts"><b>List Posts</b></Link>
           <Link to="/createPost"><b>Create Post</b></Link>
           <Switch>
             <Route path="/posts/:id" component={Post} />

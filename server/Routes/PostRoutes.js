@@ -1,5 +1,4 @@
 import express from "express";
-// import {list,show,create,update,remove} from "../controllers/ContactController";
 import {list,show,create,update,remove} from "../Controllers/PostController";
 
 const router = express.Router();
