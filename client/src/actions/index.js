@@ -1,48 +1,65 @@
-export function loadPosts() {
+export function loadParts() {
   return function (dispatch) {
-    fetch("/posts")
+    fetch("/parts")
     .then( (response) => {
       return response.json();
-    }).then((posts) => {
-      dispatch(postsLoaded(posts));
+    }).then((parts) => {
+      dispatch(partsLoaded(parts));
     });
   };
 }
-function postsLoaded(posts) {
+function partsLoaded(parts) {
   return {
-    type: "POSTS_LOADED",
-    value: posts
+    type: "PARTS_LOADED",
+    value: parts
   };
 }
-export function getPost(id) {
+export function getPart(id) {
   return function (dispatch) {
-    fetch("/posts/" +id)
+    fetch("/parts/" +id)
     .then( (response) => {
       return response.json();
-    }).then((post) => {
-      dispatch(getPostDone(post));
+    }).then((part) => {
+      dispatch(getPartDone(part));
     });
   };
 }
-function getPostDone(post) {
+function getPartDone(part) {
   return {
-    type: "GET_POST_DONE",
-    value: post
+    type: "GET_PART_DONE",
+    value: part
   };
 }
-export function createPost(p) {
+export function createPart(p) {
   return function (dispatch) {
-    fetch("/posts", {
+    fetch("/parts", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(p)
-    }).then(() => dispatch(loadPosts()));
+    }).then(() => dispatch(loadParts()));
   };
 }
-export function removePost(id) {
+export function updatePart(p) {
   return function (dispatch) {
-    fetch("/posts/" + id, {
+    fetch("/parts/" + p._id, {
+      method: "PUT",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(p)
+    }).then(() => dispatch(loadParts()));
+  };
+}
+
+export function removePart(id) {
+  return function (dispatch) {
+    fetch("/parts/" + id, {
       method: "DELETE"
-    }).then(() => dispatch(loadPosts()));
+    }).then(() => dispatch(loadParts()));
+  };
+}
+
+export function setSearchText(txt) {
+  return {
+    type: "SET_SEARCH_TEXT",
+    value: txt
   };
 }

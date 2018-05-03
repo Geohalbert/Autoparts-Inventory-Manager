@@ -1,16 +1,16 @@
 import Main from "../Components/Main";
 import { connect } from "react-redux";
-import {loadPosts,getPost} from "../actions";
+import {loadParts,getPart} from "../actions";
 
 
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadPosts: function () {
-      dispatch(loadPosts());
+    loadParts: function () {
+      dispatch(loadParts());
     },
-    getPost:function(post){
-          let action = getPost(post);
+    getPart:function(part){
+          let action = getPart(part);
           dispatch(action);
         }
   };

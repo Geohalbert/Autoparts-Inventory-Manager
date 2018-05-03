@@ -1,20 +1,25 @@
 import {combineReducers} from "redux";
 
-function posts(state = [], action) {
-  if (action.type === "POSTS_LOADED") {
+function parts(state = [], action) {
+  if (action.type === "PARTS_LOADED") {
     return action.value;
   }
   return state;
 }
 
-function post(state = [], action) {
-  if (action.type === "GET_POST_DONE") {
+function part(state = [], action) {
+  if (action.type === "GET_PART_DONE") {
     return action.value;
   }
   return state;
 }
-
+function searchText(state = "", action) {
+  if (action.type === "SET_SEARCH_TEXT") {
+    return action.value;
+  }
+  return state;
+}
 const rootReducer = combineReducers({
-  posts,post
+  parts,part,searchText
 });
 export default rootReducer;

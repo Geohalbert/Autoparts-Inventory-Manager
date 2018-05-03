@@ -1,13 +1,13 @@
 import React from 'react';
 import {Input} from "semantic-ui-react";
 
-function SearchPosts(props) {
+function SearchParts(props) {
   return (
       <div>
         <center>
-        <h2>Posts Search</h2>
-        Search Posts:
-        <Input placeholder="Search by location or item" onChange={(e)=>{
+        <h2>Parts Search</h2>
+        Search Parts:
+        <Input placeholder="Bin or part #" onChange={(e)=>{
             if(props.set){
               props.set(e.target.value);
             }
@@ -17,4 +17,4 @@ function SearchPosts(props) {
   );
 }
 
-export default SearchPosts;
+export default SearchParts;

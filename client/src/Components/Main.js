@@ -1,16 +1,18 @@
 import React from "react";
-import PostsContainer from "../Containers/PostsContainer";
-import CreatePostsContainer from "../Containers/CreatePostsContainer";
+import PartsContainer from "../Containers/PartsContainer";
+import CreatePartsContainer from "../Containers/CreatePartsContainer";
+import SearchPartsContainer from "../Containers/SearchPartsContainer";
 
 function Main() {
   return (
     <div>
       <div style={{float: "left", width: "49%"}}>
-        <h1>Posts </h1>
-        <PostsContainer />
+        <div><SearchPartsContainer /></div>
+        <h1>Parts </h1>
+        <PartsContainer />
       </div>
       <div style={{float: "left", width: "49%"}}>
-        <div><CreatePostsContainer /></div>
+        <div><CreatePartsContainer /></div>
       </div>
     </div>
   );

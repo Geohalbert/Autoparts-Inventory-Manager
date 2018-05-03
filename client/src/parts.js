@@ -1,73 +1,51 @@
 export default [
   {
     "_id": 1,
-    "location": "Austin",
-    "item": "monkey",
-    "price": "20",
-    "seller": "Ben"
+    "isMissing": false,
+    "isMoved": false,
+    "isLabeled": false,
+    "partNumber": 20810005,
+    "location": 1095,
+    "onHand": 1,
+    "date": 1,
+    "memo": "memo",
+    "deleted": false
   },
   {
     "_id": 2,
-    "location": "Austin",
-    "item": "sausage",
-    "price": "1",
-    "seller": "Ben"
+    "isMissing": true,
+    "isMoved": false,
+    "isLabeled": false,
+    "partNumber": 22936017,
+    "location": 1089,
+    "onHand": 1,
+    "date": 1,
+    "memo": "memo",
+    "deleted": false
   },
   {
-    "id": 3,
-    "location": "Austin",
-    "item": "dog",
-    "price": "0",
-    "seller": "Thibeault"
+    "_id": 3,
+    "isMissing": true,
+    "isMoved": false,
+    "isLabeled": false,
+    "partNumber": 23338340,
+    "location": 1085,
+    "onHand": 1,
+    "date": 1,
+    "memo": "memo",
+    "deleted": false
   },
   {
-    "id": 4,
-    "location": "Houston",
-    "item": "glasses",
-    "price": "10",
-    "seller": "Karen"
-  },
-  {
-    "id": 5,
-    "location": "Houston",
-    "item": "towel",
-    "price": 100,
-    "seller": "Mikey"
-  },
-  {
-    "id": 6,
-    "location": "Dallas",
-    "item": "magic",
-    "price": 5,
-    "seller": "Tony Romo"
-  },
-  {
-    "id": 7,
-    "location": "Dallas",
-    "item": "lipstick",
-    "price": 10,
-    "seller": "Benny Lee"
-  },
-  {
-    "id": 8,
-    "location": "Dallas",
-    "item": "cat",
-    "price": 5,
-    "seller": "Nerney"
-  },
-  {
-    "id": 9,
-    "location": "Midland",
-    "item": "oil",
-    "price": 50,
-    "seller": "Cletis Redneck"
-  },
-  {
-    "id": 10,
-    "location": "Odessa",
-    "item": "barrel",
-    "price": 6,
-    "seller": "Cletis Redneck Jr."
+    "_id": 4,
+    "isMissing": true,
+    "isMoved": false,
+    "isLabeled": false,
+    "partNumber": 13579523,
+    "location": 1083,
+    "onHand": 1,
+    "date": 1,
+    "memo": "memo",
+    "deleted": false
   }
 ];
 
