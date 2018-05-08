@@ -45,7 +45,8 @@ export function updatePart(p) {
       method: "PUT",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(p)
-    }).then(() => dispatch(loadParts()));
+    }).then(() => dispatch(loadParts()))
+    .catch(err => console.log(err));
   };
 }
 

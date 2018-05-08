@@ -1,16 +1,14 @@
 import React from "react";
-import {Dropdown, Input, Button, Grid} from "semantic-ui-react";
-
+import {Input, Button, Dropdown, Grid} from "semantic-ui-react";
 
 class EditPart extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
         fieldsVisible: false,
         locationEditFlagVisible: false,
         onHandEditFlagVisible: false,
-        isMissingEditFlagVisible: false,
-        teacherEditFlagVisible: false,
+        statusEditFlagVisible: false,
         errorEditFlagVisible: false,
         successEditFlagVisible: false,
       part: {
@@ -18,12 +16,12 @@ class EditPart extends React.Component {
         partNumber: "",
         location: "",
         onHand: "",
-        issue: "",
+        status: ""
       },
     };
   }
 
-  selectID = (e, { value }) => {
+  selectPart = (e, { value }) => {
     let tempPart = this.props.parts.filter((p) => {
         return p.partNumber === value;
     });
@@ -33,8 +31,7 @@ class EditPart extends React.Component {
                     partNumber: value,
                     location: tempPart[0].location,
                     onHand: tempPart[0].onHand,
-                    length: tempPart[0].length,
-                    teacher: tempPart[0].teacher,
+                    status: tempPart[0].status,
                      };
 
     this.setState({
@@ -43,15 +40,40 @@ class EditPart extends React.Component {
     })
     //console.log(this.state.part);
   }
+  statusSelect = (e, { value }) => {
+    let part = {status: value};
+    this.setState({
+      part: Object.assign(this.state.part,part)
+    });
+
+  }
 
   render() {
-    let partIDs = [];
-    partIDs = this.props.parts.map(function(p){
-        return {
-            text: p.partNumber + " - " + p.location,
-            value: p.partNumber
-        }
-    });
+    // let PartNumbers = [];
+    // const PartsLength = this.props.parts()
+    // for() PartNumbers
+    // PartNumbers = this.props.parts.map(function(p){
+    //     return {
+    //         text: p.partNumber,
+    //         value: p.partNumber
+    //     }
+    // })
+
+    const PartNumbers = [
+      {
+          text: "20810005",
+          value: "20810005"
+      },
+      {
+          text: "22936017",
+          value: "22936017"
+      },
+      {
+          text:  "23338340",
+          value:  "23338340"
+      },
+    ]
+
     let locationEditFlag = "";
     if (this.state.locationEditFlagVisible === true ){
       locationEditFlag= "Please enter a valid location (letters and spaces only)";
@@ -61,24 +83,10 @@ class EditPart extends React.Component {
     }
     let onHandEditFlag = "";
     if (this.state.onHandEditFlagVisible === true ){
-      onHandEditFlag= "Please enter a valid onHand (numbers only)";
+      onHandEditFlag= "Please enter a valid onHand (letters only)";
     }
     else{
       onHandEditFlag= "";
-    }
-    let lengthEditFlag = "";
-    if (this.state.lengthEditFlagVisible === true ){
-      lengthEditFlag= "Please enter a valid length (numbers only)";
-    }
-    else{
-      lengthEditFlag= "";
-    }
-    let teacherEditFlag = "";
-    if (this.state.teacherEditFlagVisible === true ){
-        teacherEditFlag= "Please enter a valid teacher (letters and spaces only)";
-    }
-    else{
-        teacherEditFlag= "";
     }
     let errorEditFlag = "";
     if (this.state.errorEditFlagVisible === true ){
@@ -94,90 +102,20 @@ class EditPart extends React.Component {
     else{
         successEditFlag= "";
     }
-    let changeFields = "";
-    if (this.state.fieldsVisible){
-        changeFields = <div>
-                            <div>
-                                <center>Name:</center><Input placeholder="Letters and Spaces" value={this.state.part.location} onChange={(e) => {
-                                    const part = {location: e.target.value,};
-                                    this.setState({
-                                        part: Object.assign(this.state.part,part)
-                                    });
-                                    if (/^[a-zA-Z\s]+$/.test(e.target.value) || e.target.value === ""){
-                                        this.setState({
-                                            locationEditFlagVisible: false,
-                                        });
-                                    }
-                                    else{
-                                        this.setState({
-                                            locationEditFlagVisible: true
-                                            });
-
-                                    }
-                                }} />
-                            </div>
-                            {locationEditFlag}
-                            <div>
-                                <center>Subject:</center><Input placeholder="Letters Only" value={this.state.part.onHand} onChange={(e) => {
-                                    const part = {onHand: e.target.value,};
-                                    this.setState({
-                                        part: Object.assign(this.state.part,part)
-                                    });
-                                    if (/^[a-zA-Z]+$/.test(e.target.value) || e.target.value === ""){
-                                        this.setState({
-                                        onHandEditFlagVisible: false,
-                                        });
-                                    }
-                                    else{
-                                        this.setState({
-                                        onHandEditFlagVisible: true
-                                        });
-                                    }
-                                }} />
-                            </div>
-                            {onHandEditFlag}
-                            <div>
-                                <center>Length:</center><Input placeholder="Number" value={this.state.part.length} onChange={(e) => {
-                                    const part = {length: e.target.value,};
-                                        this.setState({
-                                            part: Object.assign(this.state.part,part)
-                                        });
-                                    if (/^[0-9]+$/.test(e.target.value) || e.target.value === ""){
-                                        this.setState({
-                                            lengthEditFlagVisible: false,
-                                        });
-                                        }
-                                        else{
-                                        this.setState({
-                                            lengthEditFlagVisible: true
-                                        });
-                                    }
-                                }} />
-                            </div>
-                            {lengthEditFlag}
-                            <div>
-                            <center>Teacher:</center><Input placeholder="Letters and Spaces" value={this.state.part.teacher} onChange={(e) => {
-                                        const part = {teacher: e.target.value,};
-                                        this.setState({
-                                            part: Object.assign(this.state.part,part)
-                                        });
-                                        if (/^[a-zA-Z\s]+$/.test(e.target.value) || e.target.value === ""){
-                                        this.setState({
-                                            teacherEditFlagVisible: false,
-                                        });
-                                        }
-                                        else{
-                                        this.setState({
-                                            teacherEditFlagVisible: true
-                                            });
-
-                                    }
-                                }} />
-                            </div>
-                            {teacherEditFlag}
-                    </div>
-    }
-
+    const statusFields = [
+      {
+          text: "Missing",
+          value: "Missing"
+      },
+      {
+          text: "Needs label",
+          value: "Needs label"
+      },
+      {
+          text: "Resolved",
+          value: "Resolved"
+      },
+    ]
 
     return (
 
@@ -191,11 +129,7 @@ class EditPart extends React.Component {
                     <h2>Edit Part</h2>
                     <form onSubmit={(e) => {
                         e.preventDefault();
-                        if (this.props.updatePart && this.state.locationEditFlagVisible === false &&
-                        this.state.lengthEditFlagVisible === false && this.state.onHandEditFlagVisible === false  &&
-                        this.state.teacherEditFlagVisible === false && this.state.part.location !== "" &&
-                        this.state.part.length !== "" && this.state.part.onHand !== "" && this.state.part.teacher !== "") {
-
+                        if (this.props.updatePart) {
                             this.props.updatePart(this.state.part);
                             this.setState({
                                 errorEditFlagVisible: false,
@@ -211,19 +145,16 @@ class EditPart extends React.Component {
                         }
                     }>
                         <div className="dropdown">
-                        Select Part ID to Edit:
-                        <Dropdown placeholder="Parts" fluid selection onChange={this.selectID} options={partIDs} />
+                        Select Part to Edit:
+                        <Dropdown placeholder="Parts" fluid selection onChange={this.selectPart} options={PartNumbers} />
                         </div>
-                        {changeFields}
+                        <div className="dropdown">
+                        <center>Status:</center><Dropdown placeholder="Select status" fluid selection onChange={this.statusSelect} options={statusFields} />
+                        </div>
                         <div><center><Button>Edit</Button></center></div>
                         {errorEditFlag}
                         {successEditFlag}
                     </form>
-                    <button onClick={
-                      (e) => {
-                          props.removePart(p._id);
-                      }
-                    }>Delete</button>
                 </div>
             </Grid.Column>
         </Grid>
@@ -233,3 +164,289 @@ class EditPart extends React.Component {
   }
 }
 export default EditPart;
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       part: {
+//         partNumber: "",
+//         location: "",
+//         onHand: "",
+//         status: ""
+//       },
+//       isUpdated: false
+//     };
+//   }
+//   //
+//   statusSelect = (e, { value }) => {
+//     const editPart = {status: value};
+//     this.setState({
+//       part: Object.assign(this.state.part,editPart)
+//     });
+//
+//   }
+//     componentDidMount() {
+//       let Id = this.props.match.params.id;
+//       this.props.getPart(Id);
+//     }
+//
+//     componentWillReceiveProps(nextprops) {
+//     if (this.props.part !== nextprops.part) {
+//         this.setState({
+//             part: {
+//                 location: nextprops.part.location,
+//                 onHand: nextprops.part.onHand
+//             }
+//         });
+//     }
+// }
+//
+// handleUpdate() {
+//   if(this.props.updatePart) {
+//     this.props.updatePart(this.props.part.id, this.state.part);
+//     this.setState({isUpdated: true});
+//   }
+// };
+// render() {
+//   const statusFields = [
+//     {
+//         text: "Missing",
+//         value: "Missing"
+//     },
+//     {
+//         text: "Needs label",
+//         value: "Needs label"
+//     },
+//     {
+//         text: "Resolved",
+//         value: "Resolved"
+//     },
+//   ]
+//   const updateContent =
+//     <form onSubmit={(e) => {
+//       e.preventDefault();
+//       this.handleUpdate();
+//     }}>
+//       <div>
+//         <div className="row">
+//           <center>Current part details</center>
+//           <div><b>Part Number:</b> {this.props.part.partNumber}</div>
+//           <div><b>Location: </b> {this.props.part.location}</div>
+//           <div><b>On Hand: </b> {this.props.part.onHand}</div>
+//           <div><b>Status: </b> {this.props.part.status}</div>
+//         </div>
+//         <div>
+//             Location: <input onChange={(e) => {
+//               const editPart = {location: e.target.value};
+//               this.setState({
+//                 part: Object.assign(this.state.part,editPart)
+//               });
+//             }} value={this.state.part.location} />
+//           </div>
+//           <div>
+//             On Hand: <input onChange={(e) => {
+//               const editPart = {onHand: e.target.value};
+//               this.setState({
+//                 part: Object.assign(this.state.part,editPart)
+//               });
+//             }} value={this.state.part.onHand} />
+//           </div>
+//           <div className="dropdown">
+//           <center>Status:</center><Dropdown placeholder="Select status" fluid selection onChange={this.statusSelect} options={statusFields} />
+//           </div>
+//           <div><center><Button>Update</Button></center></div>
+//         </div>
+//       </form>
+//
+//       const updated = <Redirect to="/" />
+//
+//       return (
+//         <div>{this.state.isUpdated ? updated : updateContent}</div>
+//       )
+//     }
+// }
+// constructor() {
+//   super();
+//   this.state = {
+//     partNumberFlagVisible: false,
+//     locationFlagVisible: false,
+//     onHandFlagVisible: false,
+//     errorFlagVisible: false,
+//     successFlagVisible: false,
+//     part: {
+//       partNumber: "",
+//       location: "",
+//       onHand: "",
+//       status: ""
+//     }
+//   };
+// }
+// componentDidMount() {
+//   let id = this.props.match.params.id;
+//   this.props.getPart(id);
+// }
+//
+// statusSelect = (e, { value }) => {
+//   let part = {status: value};
+//   this.setState({
+//     part: Object.assign(this.state.part,part)
+//   });
+//
+// }
+//
+// render() {
+//   let partNumberFlag = "";
+//   if (this.state.partNumberFlagVisible === true ) {
+//     partNumberFlag = "Please enter a part number";
+//   }
+//   else {
+//     partNumberFlag = "";
+//   }
+//   let locationFlag = "";
+//   if (this.state.locationFlagVisible === true ){
+//     locationFlag = "Please enter a bin location";
+//   }
+//   else {
+//     locationFlag = "";
+//   }
+//   let onHandFlag = "";
+//   if (this.state.onHandFlagVisible === true ){
+//     onHandFlag= "Please enter numbers only";
+//   }
+//   else {
+//     onHandFlag = "";
+//   }
+//   let errorFlag = "";
+//   if (this.state.errorFlagVisible === true ){
+//     errorFlag = "Cannot update. Please fix errors first and make sure all fields are populated.";
+//   }
+//   else {
+//     errorFlag = "";
+//   }
+//   let successFlag = "";
+//   if (this.state.successFlagVisible === true ){
+//     successFlag = "Part Updated Successfully!";
+//   }
+//   else {
+//     successFlag = "";
+//   }
+//
+//   const statusFields = [
+//     {
+//         text: "Missing",
+//         value: "Missing"
+//     },
+//     {
+//         text: "Needs label",
+//         value: "Needs label"
+//     },
+//     {
+//         text: "Resolved",
+//         value: "Resolved"
+//     },
+//   ]
+//
+//   return (
+//     <div>
+//
+//       <div>
+//         <h2>Update Part</h2>
+//         <form onSubmit={(e) => {
+//           e.preventDefault();
+//           if (this.state.partNumberFlagVisible === false && this.state.locationFlagVisible === false && this.state.onHandFlagVisible === false && this.state.part.partNumber !== "" && this.state.part.location !== "" && this.state.part.onHand !== "" &&
+//             this.state.part.status !== "") {
+//             this.props.updatePart(this.state.part);
+//             this.setState({
+//                     errorFlagVisible: false,
+//                     successFlagVisible: true
+//                   });
+//           }
+//           else{
+//             console.log("this.props.updatePart: ",this.props.updatePart);
+//             console.log("this.state.partNumberFlagVisible: ",this.state.partNumberFlagVisible);
+//             console.log("this.state.locationFlagVisible: ",this.state.locationFlagVisible);
+//             console.log("this.state.onHandFlagVisible: ", this.state.onHandFlagVisible);
+//             console.log("this.state.part.partNumber: ", this.state.part.partNumber);
+//             console.log("this.state.part.location: ",this.state.part.location);
+//             console.log("this.state.part.onHand: ",this.state.part.onHand);
+//             console.log("this.state.part.status: ",this.state.part.status);
+//             console.log("",);
+//             console.log("",);
+//             console.log("",);
+//             console.log("",);
+//             this.setState({
+//                     errorFlagVisible: true,
+//                     successFlagVisible: false
+//                   });
+//           }
+//         }}>
+//           <div>
+//           <center>Part Number:</center><Input placeholder={this.state.part.partNumber} onChange={(e) => {
+//               if ((/^[0-9]+$/.test(e.target.value) && e.target.value.length === 8) || e.target.value === ""){
+//                 console.log("part Number success");
+//                 const part = {partNumber: e.target.value};
+//                 this.setState({
+//                   partNumberFlagVisible: false,
+//                   part: Object.assign(this.state.part,part)
+//                 });
+//               }
+//               else{
+//                 console.log("part number error")
+//                   this.setState({
+//                     partNumberFlagVisible: true
+//                   });
+//                 }
+//             }} />
+//           </div>
+//           {partNumberFlag}
+//           <div>
+//             <center>Bin location:</center><Input placeholder="Numbers and/or letters" onChange={(e) => {
+//               if ((/^[0-9]+$/.test(e.target.value) || /^[0-9]+[a-zA-Z\s]/.test(e.target.value))|| e.target.value === ""){
+//                 console.log("location success");
+//                 const part = {location: e.target.value};
+//                 this.setState({
+//                   locationFlagVisible: false,
+//                   part: Object.assign(this.state.part,part)
+//                 });
+//               }
+//               else{
+//                 console.log("location error");
+//                 this.setState({
+//                   locationFlagVisible: true
+//                   });
+//               }
+//             }} />
+//           </div>
+//           {locationFlag}
+//           <div>
+//           <center>On Hand:</center><Input placeholder="Enter quantity" onChange={(e) => {
+//               if ((/^[0-9]+$/.test(e.target.value) && e.target.value.length < 100) || e.target.value === ""){
+//                 console.log("On Hand success");
+//                 const part = {onHand: e.target.value};
+//                 this.setState({
+//                   onHandFlagVisible: false,
+//                   part: Object.assign(this.state.part,part)
+//                 });
+//               }
+//               else{
+//                 console.log("on Hand error")
+//                   this.setState({
+//                     onHandFlagVisible: true
+//                   });
+//                 }
+//             }} />
+//           </div>
+//           {onHandFlag}
+//           <div className="dropdown">
+//           <center>Status:</center><Dropdown placeholder="Select status" fluid selection onChange={this.statusSelect} options={statusFields} />
+//           </div>
+//           <div><center><Button>Update</Button></center></div>
+//           {errorFlag}
+//           {successFlag}
+//         </form>
+//       </div>
+//     </div>
+//
+//   );
+// }
+// }
+// export default EditPart;

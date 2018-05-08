@@ -14,8 +14,10 @@ class Part extends Component {
       console.log(this.props.match.params.id);
       return (
         <div>
-          <div><b>ID:</b> {this.props.part._id}</div>
+          <div><b>Part Number:</b> {this.props.part.partNumber}</div>
           <div><b>Location: </b> {this.props.part.location}</div>
+          <div><b>On Hand: </b> {this.props.part.onHand}</div>
+          <div><b>Status: </b> {this.props.part.status}</div>
         </div>
       );
     }

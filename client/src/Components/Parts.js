@@ -22,6 +22,7 @@ function Parts(props) {
           <br />  <div><b>On Hand: </b> {p.onHand}</div>
           <br />  <div><b>Status: </b> {p.status}</div>
             <Link to={"/parts/" + p._id}> View </Link>
+            <Link to={"/editpart/" + p._id}> Edit </Link>
             <button onClick={
               (e) => {
                   props.removePart(p._id);

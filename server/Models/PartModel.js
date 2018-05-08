@@ -4,23 +4,28 @@ const schema = new mongoose.Schema({
   _id: {
     type: Number
   },
+  partNumber: {
+    required: true,
+    type: String
+  },
   location: {
     required: true,
     type: String
   },
-  item: {
+  onHand: {
+    required: true,
+    type: Number
+  },
+  status: {
     required: true,
     type: String
   },
-  condition: {
-    type: String
+  date: {
+    required: false,
+    type: Date
   },
-  price: {
-    required: true,
-    type: String
-  },
-  seller: {
-    required: true,
+  memo: {
+    required: false,
     type: String
   },
   deleted: {
@@ -29,5 +34,5 @@ const schema = new mongoose.Schema({
   }
 });
 
-const PostModel = mongoose.model("Post", schema);
-export default PostModel;
+const PartModel = mongoose.model("Part", schema);
+export default PartModel;
