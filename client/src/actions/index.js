@@ -16,7 +16,7 @@ function partsLoaded(parts) {
 }
 export function getPart(id) {
   return function (dispatch) {
-    fetch("/parts/" +id)
+    fetch("/parts/" + id)
     .then( (response) => {
       return response.json();
     }).then((part) => {
@@ -39,9 +39,9 @@ export function createPart(p) {
     }).then(() => dispatch(loadParts()));
   };
 }
-export function updatePart(p) {
+export function updatePart(p, id) {
   return function (dispatch) {
-    fetch("/parts/" + p._id, {
+    fetch("/parts/" + id, {
       method: "PUT",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(p)

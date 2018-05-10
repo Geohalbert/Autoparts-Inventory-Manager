@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import {updatePart} from "../actions";
 import EditPart from "../Components/EditPart";
+import {getPart,updatePart} from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -10,9 +10,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    getPart: function (id) {
+      dispatch(getPart(id));
+    },
     updatePart: function (part) {
       dispatch(updatePart(part));
-    },
+    }
   };
 }
 

@@ -1,6 +1,6 @@
 import Main from "../Components/Main";
 import { connect } from "react-redux";
-import {loadParts,getPart} from "../actions";
+import {loadParts} from "../actions";
 
 
 
@@ -9,10 +9,10 @@ function mapDispatchToProps(dispatch) {
     loadParts: function () {
       dispatch(loadParts());
     },
-    getPart:function(part){
-          let action = getPart(part);
-          dispatch(action);
-        }
+    // getPart:function(part){
+    //       let action = getPart(part);
+    //       dispatch(action);
+    //     }
   };
 }
 
