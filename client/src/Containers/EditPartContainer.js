@@ -4,7 +4,8 @@ import {getPart,updatePart} from "../actions";
 
 function mapStateToProps(state) {
   return {
-    part: state.part
+    part: state.part,
+    parts: state.parts
   };
 }
 
@@ -13,8 +14,8 @@ function mapDispatchToProps(dispatch) {
     getPart: function (id) {
       dispatch(getPart(id));
     },
-    updatePart: function (part) {
-      dispatch(updatePart(part));
+    updatePart: function (id, part) {
+      dispatch(updatePart(id, part));
     }
   };
 }

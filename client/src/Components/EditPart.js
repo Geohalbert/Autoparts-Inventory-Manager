@@ -1,7 +1,7 @@
-import React from "react";
-import {Input, Button, Dropdown, Grid} from "semantic-ui-react";
+import React, { Component } from "react";
+import {Input, Button, Dropdown} from "semantic-ui-react";
 
-class EditPart extends React.Component {
+class EditPart extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,6 +21,11 @@ class EditPart extends React.Component {
     };
   }
 
+  componentDidMount() {
+    let id = this.props.match.params.id;
+    this.props.getPart(id);
+  }
+
   statusSelect = (e, { value }) => {
     let part = {status: value};
     this.setState({
@@ -30,7 +35,12 @@ class EditPart extends React.Component {
   }
 
   render() {
-
+    console.log(this.props.part);
+    console.log(this.props.match.params.id);
+    let currentPartNumber = this.props.part.partNumber;
+    let currentLocation = this.props.part.location;
+    let currentOnHand = this.props.part.onHand;
+    let currentStatus = this.props.part.status;
     let partNumberFlag = "";
     if (this.state.partNumberFlagVisible === true ) {
       partNumberFlag = "Please enter a part number";
@@ -54,14 +64,14 @@ class EditPart extends React.Component {
     }
     let errorFlag = "";
     if (this.state.errorFlagVisible === true ){
-      errorFlag = "Cannot create. Please fix errors first and make sure all fields are populated.";
+      errorFlag = "Cannot edit. Please fix errors first and make sure all entries are accurate.";
     }
     else {
       errorFlag = "";
     }
     let successFlag = "";
     if (this.state.successFlagVisible === true ){
-      successFlag = "Part Created Successfully!";
+      successFlag = "Part Edited Successfully!";
     }
     else {
       successFlag = "";
@@ -81,56 +91,6 @@ class EditPart extends React.Component {
           value: "Resolved"
       },
     ]
-    //
-    // let partNumberFlag = "";
-    // if (this.state.partNumberFlagVisible === true ) {
-    //   partNumberFlag = "Please enter a part number";
-    // }
-    // else {
-    //   partNumberFlag = "";
-    // }
-    // let locationEditFlag = "";
-    // if (this.state.locationEditFlagVisible === true ){
-    //   locationEditFlag= "Please enter a valid location (letters and spaces only)";
-    // }
-    // else{
-    //   locationEditFlag = "";
-    // }
-    // let onHandEditFlag = "";
-    // if (this.state.onHandEditFlagVisible === true ){
-    //   onHandEditFlag= "Please enter a valid onHand (letters only)";
-    // }
-    // else{
-    //   onHandEditFlag= "";
-    // }
-    // let errorEditFlag = "";
-    // if (this.state.errorEditFlagVisible === true ){
-    //   errorEditFlag= "Cannot edit part. Please fix error first and make sure all fields are populated.";
-    // }
-    // else{
-    //   errorEditFlag= "";
-    // }
-    // let successEditFlag = "";
-    // if (this.state.successEditFlagVisible === true ){
-    //     successEditFlag= "Part Successfully Edited";
-    // }
-    // else{
-    //     successEditFlag= "";
-    // }
-    // const statusFields = [
-    //   {
-    //       text: "Missing",
-    //       value: "Missing"
-    //   },
-    //   {
-    //       text: "Needs label",
-    //       value: "Needs label"
-    //   },
-    //   {
-    //       text: "Resolved",
-    //       value: "Resolved"
-    //   },
-    // ]
 
     return (
 
@@ -141,36 +101,43 @@ class EditPart extends React.Component {
       //
       //           <Grid.Column computer={2} tablet={2} mobile={2}>
       <div>
-                    <div>
-                    <h2>Edit Part</h2>
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        if (this.props.updatePart) {
-                            this.props.updatePart(this.state.part);
-                            this.setState({
-                                errorEditFlagVisible: false,
-                                successEditFlagVisible: true
-                            });
-                        }
-                        else{
-                          console.log("this.props.updatePart: ",this.props.updatePart);
-                          console.log("this.state.partNumberFlagVisible: ",this.state.partNumberFlagVisible);
-                          console.log("this.state.locationFlagVisible: ",this.state.locationFlagVisible);
-                          console.log("this.state.onHandFlagVisible: ", this.state.onHandFlagVisible);
-                          console.log("this.state.part.partNumber: ", this.state.part.partNumber);
-                          console.log("this.state.part.location: ",this.state.part.location);
-                          console.log("this.state.part.onHand: ",this.state.part.onHand);
-                          console.log("this.state.part.status: ",this.state.part.status);
-                          console.log("",);
-                          console.log("",);
-                          console.log("",);
-                          console.log("",);
-                          this.setState({
-                                  errorFlagVisible: true,
-                                  successFlagVisible: false
-                                });
-                        }
-                      }}>
+        <div>
+          <div><b>Part Number:</b> {this.props.part.partNumber}</div>
+          <div><b>Location: </b> {this.props.part.location}</div>
+          <div><b>On Hand: </b> {this.props.part.onHand}</div>
+          <div><b>Status: </b> {this.props.part.status}</div>
+        </div>
+        <div>
+          <h2>Edit Part</h2>
+          <form onSubmit={(e) => {
+              e.preventDefault();
+              if (this.state.partNumberFlagVisible === false && this.state.locationFlagVisible === false && this.state.onHandFlagVisible === false && this.state.part.partNumber !== "" && this.state.part.location !== "" && this.state.part.onHand !== "" &&
+                this.state.part.status !== "") {
+                  this.props.updatePart(this.state.part);
+                this.setState({
+                    errorEditFlagVisible: false,
+                    successEditFlagVisible: true
+                });
+            }
+              else{
+                console.log("this.props.updatePart: ",this.props.updatePart);
+                console.log("this.state.partNumberFlagVisible: ",this.state.partNumberFlagVisible);
+                console.log("this.state.locationFlagVisible: ",this.state.locationFlagVisible);
+                console.log("this.state.onHandFlagVisible: ", this.state.onHandFlagVisible);
+                console.log("this.state.part.partNumber: ", this.state.part.partNumber);
+                console.log("this.state.part.location: ",this.state.part.location);
+                console.log("this.state.part.onHand: ",this.state.part.onHand);
+                console.log("this.state.part.status: ",this.state.part.status);
+                console.log("",);
+                console.log("",);
+                console.log("",);
+                console.log("",);
+                this.setState({
+                        errorFlagVisible: true,
+                        successFlagVisible: false
+                      });
+              }
+            }}>
                         <div>
                         <center>Part Number:</center><Input placeholder="8 Digit Number" onChange={(e) => {
                             if ((/^[0-9]+$/.test(e.target.value) && e.target.value.length === 8) || e.target.value === ""){
@@ -235,6 +202,7 @@ class EditPart extends React.Component {
                         {errorFlag}
                         {successFlag}
                       </form>
+
                     </div>
                   </div>
                 );

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
 import Main from "./Components/Main";
-import Part from "./Containers/PartContainer";
+// import Part from "./Containers/PartContainer";
 import Parts from "./Containers/PartsContainer";
 import MissingParts from "./Containers/MissingPartsContainer";
 import ResolvedParts from "./Containers/ResolvedPartsContainer";
 import LabelParts from "./Containers/LabelPartsContainer";
 import CreateParts from "./Containers/CreatePartsContainer";
-import ViewPart from "./Containers/ViewPartContainer";
+import EditPart from "./Containers/EditPartContainer";
 import {Link} from "react-router-dom";
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 
@@ -34,7 +34,7 @@ class App extends Component {
           <Link to="/createPart"><b>Create Part</b></Link>
           <Link to="/editpart"><b>Edit Part</b></Link>
           <Switch>
-            <Route path="/parts/:id" component={ViewPart} />
+            <Route path="/parts/:id" component={EditPart} />
             <Route path="/parts" component={Parts} />
             <Route path="/missingparts" component={MissingParts} />
             <Route path="/labelparts" component={LabelParts} />

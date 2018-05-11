@@ -39,14 +39,13 @@ export function createPart(p) {
     }).then(() => dispatch(loadParts()));
   };
 }
-export function updatePart(p, id) {
+export function updatePart(part) {
   return function (dispatch) {
-    fetch("/parts/" + id, {
+    fetch("/parts/" + part._id, {
       method: "PUT",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(p)
-    }).then(() => dispatch(loadParts()))
-    .catch(err => console.log(err));
+      body: JSON.stringify(part)
+    }).then(() => dispatch(getPart(part._id)));
   };
 }
 
