@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
   },
   memo: {
     required: false,
-    type: String
+    type: Array
   },
   deleted: {
     required: false,

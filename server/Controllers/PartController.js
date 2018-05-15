@@ -67,7 +67,7 @@ export const update = (req, res) => {
   PartModel.findById(req.params.id).exec()
   .then(part => {
     part._id = part._id;
-    part.partNumber = req.part.partNumber || part.partNumber;
+    part.partNumber = part.partNumber;
     part.location = req.body.location || part.location;
     part.onHand = req.body.onHand || part.onHand;
     part.status = req.body.status || part.status;

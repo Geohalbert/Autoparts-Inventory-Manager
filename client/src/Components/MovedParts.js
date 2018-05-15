@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import EditPartsContainer from "../Containers/EditPartsContainer"
 
 function Parts(props) {
 
@@ -10,6 +11,7 @@ function Parts(props) {
   // console.log(props.parts)
   return (
     <div>
+      <div>
       {partDivs.map((u,i) =>
           <div key={i} id="part">
           <br />  <div><b>Part number:</b> {u.partName}</div>
@@ -25,6 +27,10 @@ function Parts(props) {
 
           </div>
           )}
+        </div>
+        <div>
+          <EditPartsContainer />
+        </div>
     </div>
   );
 }

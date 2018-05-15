@@ -1,30 +1,53 @@
 import React, { Component } from "react";
-import {Input, Button, Dropdown} from "semantic-ui-react";
+import {Input, Button, Dropdown,Grid} from "semantic-ui-react";
 
 class EditPart extends Component {
   constructor() {
     super();
     this.state = {
-        fieldsVisible: false,
+        // initialLocation: "",
+        // initialOnHand: 0,
+        // initialStatus: "",
+        // newLocation: "",
+        // newOnHand: 0,
+        // newStatus: "",
+        fieldsVisible: true,
         partNumberFlagVisible: false,
         locationEditFlagVisible: false,
         onHandEditFlagVisible: false,
-        statusEditFlagVisible: false,
         errorEditFlagVisible: false,
         successEditFlagVisible: false,
       part: {
+        _id: 0,
         partNumber: "",
         location: "",
-        onHand: "",
+        onHand: 0,
         status: ""
+        // memos: []
       },
     };
   }
 
   componentDidMount() {
-    let partId = this.props.match.params.id;
-    this.props.getPart(partId);
-    console.log("this.props.getPart(partId): ",this.props.getPart(partId));
+    const thisId = this.props.match.params.id;
+    const thisPart = this.props.getPart(thisId);
+    console.log("thisPart: ", thisPart);
+    const part = { _id: thisPart._id,
+                    partNumber: thisPart.partNumber,
+                    location: thisPart.location,
+                    onHand: thisPart.onHand,
+                    status: thisPart.status
+                    // memos: tempPart[0].memos
+                     };
+
+    this.setState({
+      // initialLocation: tempPart[0].location,
+      // initialOnHand: tempPart[0].onHand,
+      // initialStatus: tempPart[0].status,
+      fieldsVisible: true,
+      part: Object.assign(this.state.part,part)
+    })
+    console.log("this.state.part: ",this.state.part);
   }
 
   statusSelect = (e, { value }) => {
@@ -36,48 +59,66 @@ class EditPart extends Component {
   }
 
   render() {
-    console.log(this.props.part);
-    console.log(this.props.match.params.id);
-    let currentPartNumber = this.props.part.partNumber;
-    let currentLocation = this.props.part.location;
-    let currentOnHand = this.props.part.onHand;
-    let currentStatus = this.props.part.status;
-    let partNumberFlag = "";
-    if (this.state.partNumberFlagVisible === true ) {
-      partNumberFlag = "Please enter a part number";
-    }
-    else {
-      partNumberFlag = "";
-    }
-    let locationFlag = "";
-    if (this.state.locationFlagVisible === true ){
-      locationFlag = "Please enter a bin location";
-    }
-    else {
-      locationFlag = "";
-    }
-    let onHandFlag = "";
-    if (this.state.onHandFlagVisible === true ){
-      onHandFlag= "Please enter numbers only";
-    }
-    else {
-      onHandFlag = "";
-    }
-    let errorFlag = "";
-    if (this.state.errorFlagVisible === true ){
-      errorFlag = "Cannot edit. Please fix errors first and make sure all entries are accurate.";
-    }
-    else {
-      errorFlag = "";
-    }
-    let successFlag = "";
-    if (this.state.successFlagVisible === true ){
-      successFlag = "Part Edited Successfully!";
-    }
-    else {
-      successFlag = "";
-    }
+    // let initialLocation = this.state.part.location;
+    // let initialOnHand = this.state.part.onHand;
+    // let initialStatus = this.state.part.status;
+    //
+    // console.log("initialLocation: ",initialLocation);
+    // console.log("initialOnHand: ",initialOnHand);
+    // console.log("initialStatus: ",initialStatus);
+    // let partNumbers = [];
+    //     partNumbers = this.props.parts.map(function(p){
+    //         return {
+    //             text: p.partNumber,
+    //             value: p.partNumber
+    //         }
+    //     });
 
+
+    const part = { _id: this.props.part._id,
+                    partNumber: value,
+                    location: tempPart[0].location,
+                    onHand: tempPart[0].onHand,
+                    status: tempPart[0].status
+                    // memos: tempPart[0].memos
+                     };
+    this.setState({
+      // initialLocation: tempPart[0].location,
+      // initialOnHand: tempPart[0].onHand,
+      // initialStatus: tempPart[0].status,
+      fieldsVisible: true,
+      part: Object.assign(this.state.part,part)
+    })
+    console.log("this.state.part: ",this.state.part);
+    let locationEditFlag = "";
+    if (this.state.locationEditFlagVisible === true ){
+      locationEditFlag= "Please enter a valid location (letters only)";
+    }
+    else{
+      locationEditFlag= "";
+    }
+    let onHandEditFlag = "";
+    if (this.state.onHandEditFlagVisible === true ){
+      onHandEditFlag= "Please enter a valid On Hand (numbers only)";
+    }
+    else{
+      onHandEditFlag= "";
+    }
+    let errorEditFlag = "";
+    if (this.state.errorEditFlagVisible === true ){
+      errorEditFlag= "Cannot edit part. Please fix error first and make sure all fields are populated.";
+    }
+    else{
+      errorEditFlag= "";
+    }
+    let successEditFlag = "";
+    if (this.state.successEditFlagVisible === true ){
+        successEditFlag= "Part Successfully Edited";
+    }
+    else{
+        successEditFlag= "";
+    }
+    let changeFields = "";
     const statusFields = [
       {
           text: "Missing",
@@ -92,122 +133,109 @@ class EditPart extends Component {
           value: "Resolved"
       },
     ]
+    if (this.state.fieldsVisible){
+        changeFields = <div>
+                            <div>
+                                <center>Location:</center><Input placeholder="Letters Only" value={this.state.part.location} onChange={(e) => {
+                                    const part = {location: e.target.value,};
+                                    this.setState({
+                                        part: Object.assign(this.state.part,part)
+                                    });
+                                  if ((/^[0-9]+$/.test(e.target.value) || /^[0-9]+[a-zA-Z\s]/.test(e.target.value))|| e.target.value === ""){
+                                        this.setState({
+                                        // newLocation: e.target.value,
+                                        locationEditFlagVisible: false,
+                                        });
+                                    }
+                                    else{
+                                        this.setState({
+                                        locationEditFlagVisible: true
+                                        });
+                                    }
+                                }} />
+                            </div>
+                            {locationEditFlag}
+                            <div>
+                                <center>On Hand:</center><Input placeholder="Number" value={this.state.part.onHand} onChange={(e) => {
+                                    const part = {onHand: e.target.value,};
+                                        this.setState({
+                                            part: Object.assign(this.state.part,part)
+                                        });
+                                    if ((/^[0-9]+$/.test(e.target.value) && e.target.value.length < 100) || e.target.value === ""){
+                                        this.setState({
+                                            // newOnHand: e.target.value,
+                                            onHandEditFlagVisible: false,
+                                        });
+                                        }
+                                        else{
+                                        this.setState({
+                                            onHandEditFlagVisible: true
+                                        });
+                                    }
+                                }} />
+                            </div>
+                            {onHandEditFlag}
+                            <div>
+                              <center>Status:</center><Dropdown placeholder={this.state.part.status} fluid selection onChange={this.statusSelect} options={statusFields} />
+                              </div>
+                    </div>
+    }
+
 
     return (
 
-      // <div>
-      //     <Grid centered>
-      //       <Grid.Row>
-      //       </Grid.Row>
-      //
-      //           <Grid.Column computer={2} tablet={2} mobile={2}>
       <div>
-        <div>
-          <div><b>Part Number:</b> {this.props.part.partNumber}</div>
-          <div><b>Location: </b> {this.props.part.location}</div>
-          <div><b>On Hand: </b> {this.props.part.onHand}</div>
-          <div><b>Status: </b> {this.props.part.status}</div>
-        </div>
-        <div>
-          <h2>Edit Part</h2>
-          <form onSubmit={(e) => {
-              e.preventDefault();
-              if (this.state.partNumberFlagVisible === false && this.state.locationFlagVisible === false && this.state.onHandFlagVisible === false && this.state.part.partNumber !== "" && this.state.part.location !== "" && this.state.part.onHand !== "" &&
-                this.state.part.status !== "") {
-                  this.props.updatePart(this.state.part);
-                this.setState({
-                    errorEditFlagVisible: false,
-                    successEditFlagVisible: true
-                });
-            }
-              else{
-                console.log("this.props.updatePart: ",this.props.updatePart);
-                console.log("this.state.partNumberFlagVisible: ",this.state.partNumberFlagVisible);
-                console.log("this.state.locationFlagVisible: ",this.state.locationFlagVisible);
-                console.log("this.state.onHandFlagVisible: ", this.state.onHandFlagVisible);
-                console.log("this.state.part.partNumber: ", this.state.part.partNumber);
-                console.log("this.state.part.location: ",this.state.part.location);
-                console.log("this.state.part.onHand: ",this.state.part.onHand);
-                console.log("this.state.part.status: ",this.state.part.status);
-                console.log("",);
-                console.log("",);
-                console.log("",);
-                console.log("",);
-                this.setState({
-                        errorFlagVisible: true,
-                        successFlagVisible: false
-                      });
-              }
-            }}>
-                        <div>
-                        <center>Part Number:</center><Input placeholder="8 Digit Number" onChange={(e) => {
-                            if ((/^[0-9]+$/.test(e.target.value) && e.target.value.length === 8) || e.target.value === ""){
-                              console.log("part Number success");
-                              const part = {partNumber: e.target.value};
-                              this.setState({
-                                partNumberFlagVisible: false,
-                                part: Object.assign(this.state.part,part)
-                              });
-                            }
-                            else{
-                              console.log("part number error")
-                                this.setState({
-                                  partNumberFlagVisible: true
-                                });
-                              }
-                          }} />
-                        </div>
-                        {partNumberFlag}
-                        <div>
-                          <center>Bin location:</center><Input placeholder="Numbers and/or letters" onChange={(e) => {
-                            if ((/^[0-9]+$/.test(e.target.value) || /^[0-9]+[a-zA-Z\s]/.test(e.target.value))|| e.target.value === ""){
-                              console.log("location success");
-                              const part = {location: e.target.value};
-                              this.setState({
-                                locationFlagVisible: false,
-                                part: Object.assign(this.state.part,part)
-                              });
-                            }
-                            else{
-                              console.log("location error");
-                              this.setState({
-                                locationFlagVisible: true
-                                });
-                            }
-                          }} />
-                        </div>
-                        {locationFlag}
-                        <div>
-                        <center>On Hand:</center><Input placeholder="Enter quantity" onChange={(e) => {
-                            if ((/^[0-9]+$/.test(e.target.value) && e.target.value.length < 100) || e.target.value === ""){
-                              console.log("On Hand success");
-                              const part = {onHand: e.target.value};
-                              this.setState({
-                                onHandFlagVisible: false,
-                                part: Object.assign(this.state.part,part)
-                              });
-                            }
-                            else{
-                              console.log("on Hand error")
-                                this.setState({
-                                  onHandFlagVisible: true
-                                });
-                              }
-                          }} />
-                        </div>
-                        {onHandFlag}
-                        <div className="dropdown">
-                        <center>Status:</center><Dropdown placeholder="Select status" fluid selection onChange={this.statusSelect} options={statusFields} />
-                        </div>
-                        <div><center><Button>Update</Button></center></div>
-                        {errorFlag}
-                        {successFlag}
-                      </form>
+          <Grid centered>
+            <Grid.Row>
+            </Grid.Row>
 
-                    </div>
-                  </div>
-                );
-              }
-            }
+                <Grid.Column computer={2} tablet={2} mobile={2}>
+                    <div>
+                    <h2>Edit Part</h2>
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        if (this.props.updatePart &&
+                        this.state.onHandEditFlagVisible === false && this.state.locationEditFlagVisible === false  &&
+                        this.state.part.onHand !== "" && this.state.part.location !== "") {
+                          // let memoArr = this.state.part.memos;
+                          // let newMemoNumber = (memoArr.length)+1;
+                          // let newMemo = {
+                          //   entry: newMemoNumber,
+                          //   initialLocation: this.state.initialLocation,
+                          //   initialOnHand: this.state.initialOnHand,
+                          //   initialStatus: this.state.initialStatus,
+                          //   newLocation: this.state.newLocation,
+                          //   newOnHand: this.state.newOnHand,
+                          //   newStatus: this.state.newStatus
+                          // }
+                          // memoArr.push(newMemo);
 
+                            this.props.updatePart(this.state.part);
+                            this.setState({
+                                errorEditFlagVisible: false,
+                                successEditFlagVisible: true
+                            });
+                        }
+                        else{
+                            this.setState({
+                                errorEditFlagVisible: true,
+                                successEditFlagVisible: false
+                                });
+                        }
+                        }
+                    }>
+                        <div><b>Part Number:</b> {this.state.part.partNumber}</div>
+                        {changeFields}
+                        <div><center><Button>Edit</Button></center></div>
+                        {errorEditFlag}
+                        {successEditFlag}
+                    </form>
+                </div>
+            </Grid.Column>
+        </Grid>
+    </div>
+
+    );
+  }
+}
 export default EditPart;

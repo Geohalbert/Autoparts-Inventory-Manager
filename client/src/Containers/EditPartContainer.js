@@ -1,31 +1,7 @@
 import { connect } from "react-redux";
-import EditPart from "../Components/EditPart";
-import {getPart,updatePart} from "../actions";
-
-function mapStateToProps(state) {
-  return {
-    part: state.part,
-    parts: state.parts
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    getPart: function (id) {
-      dispatch(getPart(id));
-    },
-    updatePart: function (id, part) {
-      dispatch(updatePart(id, part));
-    }
-  };
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(EditPart);
-
-import { connect } from "react-redux";
-import EditParts from "../Components/EditParts";
+import EditPart from "../Components/EditParts";
 import {
-  updatePart,
+  updatePart,getPart
 } from "../actions";
 
 function mapStateToProps(state) {
@@ -40,7 +16,10 @@ function mapDispatchToProps(dispatch) {
     updatePart: function (part) {
       dispatch(updatePart(part));
     },
+      getPart: function (id) {
+        dispatch(getPart(id));
+      }
   };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(EditParts);
+export default connect(mapStateToProps,mapDispatchToProps)(EditPart);

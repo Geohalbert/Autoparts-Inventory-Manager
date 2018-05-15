@@ -5,6 +5,12 @@ class EditParts extends Component {
   constructor() {
     super();
     this.state = {
+        // initialLocation: "",
+        // initialOnHand: 0,
+        // initialStatus: "",
+        // newLocation: "",
+        // newOnHand: 0,
+        // newStatus: "",
         fieldsVisible: false,
         partNumberFlagVisible: false,
         locationEditFlagVisible: false,
@@ -16,7 +22,8 @@ class EditParts extends Component {
         partNumber: "",
         location: "",
         onHand: 0,
-        status: ""
+        status: "",
+        // memos: []
       },
     };
   }
@@ -31,10 +38,14 @@ class EditParts extends Component {
                     partNumber: value,
                     location: tempPart[0].location,
                     onHand: tempPart[0].onHand,
-                    status: tempPart[0].status,
+                    status: tempPart[0].status
+                    // memos: tempPart[0].memos
                      };
 
     this.setState({
+      // initialLocation: tempPart[0].location,
+      // initialOnHand: tempPart[0].onHand,
+      // initialStatus: tempPart[0].status,
       fieldsVisible: true,
       part: Object.assign(this.state.part,part)
     })
@@ -50,6 +61,13 @@ class EditParts extends Component {
   }
 
   render() {
+    let initialLocation = this.state.part.location;
+    let initialOnHand = this.state.part.onHand;
+    let initialStatus = this.state.part.status;
+
+    console.log("initialLocation: ",initialLocation);
+    console.log("initialOnHand: ",initialOnHand);
+    console.log("initialStatus: ",initialStatus);
     let partNumbers = [];
         partNumbers = this.props.parts.map(function(p){
             return {
@@ -110,6 +128,7 @@ class EditParts extends Component {
                                     });
                                   if ((/^[0-9]+$/.test(e.target.value) || /^[0-9]+[a-zA-Z\s]/.test(e.target.value))|| e.target.value === ""){
                                         this.setState({
+                                        newLocation: e.target.value,
                                         locationEditFlagVisible: false,
                                         });
                                     }
@@ -129,6 +148,7 @@ class EditParts extends Component {
                                         });
                                     if ((/^[0-9]+$/.test(e.target.value) && e.target.value.length < 100) || e.target.value === ""){
                                         this.setState({
+                                            newOnHand: e.target.value,
                                             onHandEditFlagVisible: false,
                                         });
                                         }
@@ -141,7 +161,7 @@ class EditParts extends Component {
                             </div>
                             {onHandEditFlag}
                             <div>
-                              <center>Status:</center><Dropdown placeholder="Select status" fluid selection onChange={this.statusSelect} options={statusFields} />
+                              <center>Status:</center><Dropdown placeholder={this.state.part.status} fluid selection onChange={this.statusSelect} options={statusFields} />
                               </div>
                     </div>
     }
@@ -162,6 +182,18 @@ class EditParts extends Component {
                         if (this.props.updatePart &&
                         this.state.onHandEditFlagVisible === false && this.state.locationEditFlagVisible === false  &&
                         this.state.part.onHand !== "" && this.state.part.location !== "") {
+                          // let memoArr = this.state.part.memos;
+                          // let newMemoNumber = (memoArr.length)+1;
+                          // let newMemo = {
+                          //   entry: newMemoNumber,
+                          //   initialLocation: this.state.initialLocation,
+                          //   initialOnHand: this.state.initialOnHand,
+                          //   initialStatus: this.state.initialStatus,
+                          //   newLocation: this.state.newLocation,
+                          //   newOnHand: this.state.newOnHand,
+                          //   newStatus: this.state.newStatus
+                          // }
+                          // memoArr.push(newMemo);
 
                             this.props.updatePart(this.state.part);
                             this.setState({

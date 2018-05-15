@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import EditPartsContainer from "../Containers/EditPartsContainer"
 
 function MissingParts(props) {
 
@@ -31,6 +32,9 @@ function MissingParts(props) {
 
           </div>
           )}
+          <div>
+            <EditPartsContainer />
+          </div>
     </div>
   );
 }
