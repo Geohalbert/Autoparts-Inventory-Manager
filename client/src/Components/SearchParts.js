@@ -8,7 +8,7 @@ function SearchParts(props) {
         <h2>Parts Search</h2>
         Search Parts:
         <Input placeholder="Bin or part #" onChange={(e)=>{
-            if(props.set){
+            if(e.target.value.length>7){
               props.set(e.target.value);
             }
         }} />

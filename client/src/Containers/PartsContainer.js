@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Parts from "../Components/Parts";
-import {removePart} from "../actions";
+import {removePart,setSearchText} from "../actions";
 
 
 function mapStateToProps(state) {
@@ -13,6 +13,9 @@ function mapDispatchToProps(dispatch) {
   return {
     removePart: function (id) {
       dispatch(removePart(id));
+    },
+    setSearchText: function (txt) {
+      dispatch(setSearchText(txt));
     }
   }
 }

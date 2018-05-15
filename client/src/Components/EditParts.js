@@ -25,7 +25,7 @@ class EditParts extends Component {
     let tempPart = this.props.parts.filter((p) => {
         return p.partNumber === value;
     });
-    console.log(tempPart);
+    console.log("tempPart: ",tempPart);
     console.log(value);
     const part = { _id: tempPart[0]._id,
                     partNumber: value,
@@ -38,7 +38,7 @@ class EditParts extends Component {
       fieldsVisible: true,
       part: Object.assign(this.state.part,part)
     })
-    //console.log(this.state.part);
+    console.log("this.state.part: ",this.state.part);
   }
 
   statusSelect = (e, { value }) => {
@@ -53,7 +53,7 @@ class EditParts extends Component {
     let partNumbers = [];
         partNumbers = this.props.parts.map(function(p){
             return {
-                text: p.partNumber + " - " + p.status,
+                text: p.partNumber,
                 value: p.partNumber
             }
         });
@@ -159,7 +159,7 @@ class EditParts extends Component {
                     <h2>Edit Part</h2>
                     <form onSubmit={(e) => {
                         e.preventDefault();
-                        if (this.props.updatePart && this.state.nameEditFlagVisible === false &&
+                        if (this.props.updatePart &&
                         this.state.onHandEditFlagVisible === false && this.state.locationEditFlagVisible === false  &&
                         this.state.part.onHand !== "" && this.state.part.location !== "") {
 

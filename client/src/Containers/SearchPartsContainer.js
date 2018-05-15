@@ -2,12 +2,16 @@ import { connect } from 'react-redux';
 import {setSearchText} from "../actions";
 import SearchParts from "../Components/SearchParts";
 
+// function mapStateToProps(state) {
+//   return {
+//     parts: state.parts,
+//   };
+// }
 
 function mapDispatchToProps(dispatch){
   return {
     set: function (txt) {
-      const action = setSearchText(txt);
-      dispatch(action);
+      dispatch(setSearchText(txt));
     }
   }
 }

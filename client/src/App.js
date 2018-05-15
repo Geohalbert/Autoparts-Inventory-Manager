@@ -8,7 +8,7 @@ import ResolvedParts from "./Containers/ResolvedPartsContainer";
 import LabelParts from "./Containers/LabelPartsContainer";
 import CreateParts from "./Containers/CreatePartsContainer";
 // import EditPart from "./Containers/EditPartContainer";
-import EditParts from "../Containers/EditPartsContainer"
+import EditParts from "./Containers/EditPartsContainer"
 import {Link} from "react-router-dom";
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 

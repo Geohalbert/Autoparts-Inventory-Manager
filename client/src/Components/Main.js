@@ -8,11 +8,11 @@ function Main() {
   return (
     <div>
       <div style={{float: "left", width: "49%"}}>
-        <div><SearchPartsContainer /></div>
         <h1>Parts </h1>
         <PartsContainer />
       </div>
       <div style={{float: "left", width: "49%"}}>
+        <div><SearchPartsContainer /></div>
         <div><CreatePartsContainer /></div>
         <div><EditPartsContainer /></div>
       </div>
