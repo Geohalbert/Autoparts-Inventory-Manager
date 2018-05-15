@@ -22,8 +22,9 @@ class EditPart extends Component {
   }
 
   componentDidMount() {
-    let id = this.props.match.params.id;
-    this.props.getPart(id);
+    let partId = this.props.match.params.id;
+    this.props.getPart(partId);
+    console.log("this.props.getPart(partId): ",this.props.getPart(partId));
   }
 
   statusSelect = (e, { value }) => {

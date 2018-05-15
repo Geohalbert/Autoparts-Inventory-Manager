@@ -11,9 +11,10 @@ class CreateParts extends React.Component {
       errorFlagVisible: false,
       successFlagVisible: false,
       part: {
+        _id: 0,
         partNumber: "",
         location: "",
-        onHand: "",
+        onHand: 0,
         status: ""
       }
     };
