@@ -160,7 +160,7 @@ class EditParts extends Component {
                                 }} />
                             </div>
                             {onHandEditFlag}
-                            <div>
+                            <div id="part">
                               <center>Status:</center><Dropdown placeholder={this.state.part.status} fluid selection onChange={this.statusSelect} options={statusFields} />
                               </div>
                     </div>

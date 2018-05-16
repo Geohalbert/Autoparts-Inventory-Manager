@@ -15,11 +15,16 @@ class Missing extends Component {
       return (
         <div>
           <div><b>ID:</b> {this.props.part._id}</div>
-          <div><b>Location: </b> {this.props.part.location}</div>
-          {/* <div><b>Item:</b> {this.props.part.item}</div>
-          <div><b>Condition:</b> {this.props.part.condition}</div>
-          <div><b>Price:</b> {this.props.part.price}</div>
-          <div><b>Seller:</b> {this.props.part.seller}</div> */}
+          <br />  <div><b>Part number:</b> {p.partNumber}</div>
+          <br />  <div><b>Location: </b> {p.location}</div>
+          <br />  <div><b>On Hand: </b> {p.onHand}</div>
+          <br />  <div><b>Status: </b> {p.status}</div>
+            <Link to={"/parts/" + p._id}> View/Edit </Link>
+            <button onClick={
+              (e) => {
+                  props.removePart(p._id);
+              }
+            }>Delete</button>
         </div>
       );
     }

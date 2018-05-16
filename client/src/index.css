@@ -9,7 +9,19 @@ body {
   border-style: solid;
   border-width: thin;
   border-color: black;
+  width: 300px;
+  height: 300px;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+#top {
+  background-image: url("http://media-dmg.assets-cdk.com/teams/repository/export/v/2/768/24e9889b410058274005056925fd3/76824e9889b410058274005056925fd3_700x0.jpg");
+  background-repeat: no-repeat;
+  background-position: left;
+}
+#categories {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
 }

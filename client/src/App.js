@@ -26,14 +26,17 @@ class App extends Component {
       <BrowserRouter>
         <div>
         <center>
+          <div id="top">
           <h1>Parts Inventory</h1>
           <Link to="/"><b>Main</b></Link>
-          <br /> <Link to="/parts"><b>List Parts</b></Link>
+          <div id="categories">
+          {/* <br /> <Link to="/parts"><b>List Parts</b></Link> */}
           <br /> <Link to="/missingparts"><b>Missing Parts</b></Link>
           <Link to="/labelparts"><b>Label Parts</b></Link>
           <Link to="/resolvedparts"><b>Resolved Parts</b></Link>
           <Link to="/createPart"><b>Create Part</b></Link>
           <Link to="/editpart"><b>Edit Part</b></Link>
+          </div>
           <Switch>
             <Route path="/parts/:id" component={Part} />
             <Route path="/parts" component={Parts} />
@@ -44,6 +47,7 @@ class App extends Component {
             <Route path="/editParts/:id" component={EditPart} />
             <Route path="/" component={Main} />
           </Switch>
+        </div>
           </center>
         </div>
       </BrowserRouter>

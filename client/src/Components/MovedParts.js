@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import EditPartsContainer from "../Containers/EditPartsContainer"
+import SearchPartsContainer from "../Containers/SearchPartsContainer";
+
 
 function Parts(props) {
 
@@ -14,22 +15,22 @@ function Parts(props) {
       <div>
       {partDivs.map((u,i) =>
           <div key={i} id="part">
-          <br />  <div><b>Part number:</b> {u.partName}</div>
-          <br />  <div><b>Available: </b> {u.isPlaying}</div>
-          <br />  <div><b>Wins:</b> {u.wins}</div>
-          <br />  <div><b>Losses:</b> {u.losses}</div>
-            <Link to={"/parts/" + u._id}> View </Link>
-            <button onClick={
-              (e) => {
-                  props.removePart(u._id);
-              }
-            }>Delete</button>
+            <br />  <div><b>Part number:</b> {p.partNumber}</div>
+            <br />  <div><b>Location: </b> {p.location}</div>
+            <br />  <div><b>On Hand: </b> {p.onHand}</div>
+            <br />  <div><b>Status: </b> {p.status}</div>
+              <Link to={"/parts/" + p._id}> View/Edit </Link>
+              <button onClick={
+                (e) => {
+                    props.removePart(p._id);
+                }
+              }>Delete</button>
 
           </div>
           )}
         </div>
-        <div>
-          <EditPartsContainer />
+        <div style={{float: "right", width: "49%"}}>
+          <SearchPartsContainer />
         </div>
     </div>
   );
