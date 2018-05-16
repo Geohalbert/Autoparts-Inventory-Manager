@@ -35,7 +35,7 @@ class App extends Component {
           <Link to="/labelparts"><b>Label Parts</b></Link>
           <Link to="/resolvedparts"><b>Resolved Parts</b></Link>
           <Link to="/createPart"><b>Create Part</b></Link>
-          <Link to="/editpart"><b>Edit Part</b></Link>
+          <Link to="/editparts"><b>Edit Part</b></Link>
           </div>
           <Switch>
             <Route path="/parts/:id" component={Part} />

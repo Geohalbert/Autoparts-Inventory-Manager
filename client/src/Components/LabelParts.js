@@ -19,7 +19,7 @@ function LabelParts(props) {
   console.log(props.parts)
   return (
     <div>
-      <div>
+      <div style={{float: "right", width: "49%"}}>
       {labelParts.map((p,i) =>
           <div key={i} id="part">
             <br />  <div><b>Part number:</b> {p.partNumber}</div>

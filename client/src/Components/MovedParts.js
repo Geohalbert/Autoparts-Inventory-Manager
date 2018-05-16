@@ -11,8 +11,8 @@ function Parts(props) {
   }
   // console.log(props.parts)
   return (
-    <div>
-      <div>
+    <div id="rows">
+      <div id="parts" style={{float: "left", width: "49%"}}>
       {partDivs.map((u,i) =>
           <div key={i} id="part">
             <br />  <div><b>Part number:</b> {p.partNumber}</div>
@@ -29,7 +29,7 @@ function Parts(props) {
           </div>
           )}
         </div>
-        <div style={{float: "right", width: "49%"}}>
+        <div style={{float: "left", width: "49%"}}>
           <SearchPartsContainer />
         </div>
     </div>
