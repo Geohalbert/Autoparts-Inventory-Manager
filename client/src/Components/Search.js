@@ -12,6 +12,7 @@ class Search extends React.Component {
 
    onChange(e) {
      if(e.target.value.length>7){
+       // this.setState({searchText: e.target.value});
        this.setState({searchText: e.target.value});
      }
    }

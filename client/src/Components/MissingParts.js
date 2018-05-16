@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import EditPartsContainer from "../Containers/EditPartsContainer"
+import SearchPartsContainer from "../Containers/SearchPartsContainer";
 
 function MissingParts(props) {
 
@@ -19,6 +19,7 @@ function MissingParts(props) {
   console.log(props.parts)
   return (
     <div>
+      <div style={{float: "left", width: "49%"}}>
       {missingParts.map((p,i) =>
           <div key={i} id="part">
           <br />  <div><b>Part number:</b> {p.partNumber}</div>
@@ -32,8 +33,9 @@ function MissingParts(props) {
 
           </div>
           )}
-          <div>
-            <EditPartsContainer />
+          <div style={{float: "left", width: "49%"}}>
+            <SearchPartsContainer />
+          </div>
           </div>
     </div>
   );

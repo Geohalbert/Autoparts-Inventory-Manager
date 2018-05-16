@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import Parts from "../Components/Parts";
-import {removePart,setSearchText} from "../actions";
+import {removePart} from "../actions";
 
 
 function mapStateToProps(state) {
   return {
     parts: state.parts,
+    searchFilter: state.searchText,
   };
 }
 
@@ -14,9 +15,9 @@ function mapDispatchToProps(dispatch) {
     removePart: function (id) {
       dispatch(removePart(id));
     },
-    setSearchText: function (txt) {
-      dispatch(setSearchText(txt));
-    }
+    // setSearchText: function (txt) {
+    //   dispatch(setSearchText(txt));
+    // }
   }
 }
 

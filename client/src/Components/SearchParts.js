@@ -7,12 +7,17 @@ function SearchParts(props) {
         <center>
         <h2>Parts Search</h2>
         Search Parts:
-        <Input placeholder="Bin or part #" onChange={(e)=>{
+        <Input placeholder="Search by part #" onChange={(e)=>{
             if(e.target.value.length>7){
               props.set(e.target.value);
             }
         }} />
         </center>
+        <button onClick={
+          (e) => {
+              props.set(null);
+          }
+        }>Clear</button>
       </div>
   );
 }

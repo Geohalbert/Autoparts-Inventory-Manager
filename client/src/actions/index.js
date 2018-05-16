@@ -63,3 +63,13 @@ export function setSearchText(txt) {
     value: txt
   };
 }
+// export function searchParts(txt) {
+//   return function (dispatch) {
+//     fetch("/parts")
+//     .then( (response) => {
+//       return response.json();
+//     }).then((parts) => {
+//       dispatch(partsLoaded(parts));
+//     });
+//   };
+// }
