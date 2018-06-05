@@ -22,10 +22,18 @@ body {
   font-family: sans-serif;
 }
 .logo_img {
-    width: 40%;
+    width: 33%;
     height: auto;
+	float: left;
 }
-#top {
+#links{
+	width: 33%;
+	display: flex;
+	height: auto;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#head {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,8 +41,8 @@ body {
 }
 #categories {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  width: 500px;
   align-items: baseline;
 }
 #rows {

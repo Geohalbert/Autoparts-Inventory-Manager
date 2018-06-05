@@ -26,19 +26,23 @@ class App extends Component {
       <BrowserRouter>
         <div>
         <center>
-          <div id="top">
-		    <div id="logo">
+          <div id="head">
+		    <div>
               <img className="logo_img" src="http://media-dmg.assets-cdk.com/teams/repository/export/v/2/768/24e9889b410058274005056925fd3/76824e9889b410058274005056925fd3_700x0.jpg" />
             </div>
-			<div><h1>Parts Inventory</h1></div>
-			<div id="categories">
-			<Link to="/"><b>Main</b></Link>
-			{/* <br /> <Link to="/parts"><b>List Parts</b></Link> */}
-			<br /> <Link to="/missingparts"><b>Missing Parts</b></Link>
-			<Link to="/labelparts"><b>Label Parts</b></Link>
-			<Link to="/resolvedparts"><b>Resolved Parts</b></Link>
-			<Link to="/createpart"><b>Create Part</b></Link>
-			<Link to="/editparts"><b>Edit Part</b></Link>
+			<div style={{width: "33%"}}><h1>Parts Inventory</h1></div>
+			<div id="links">
+			  <div>
+				<Link to="/"><b>Main</b></Link>
+			  </div>			 
+			  <div id="categories">
+			    {/* <br /> <Link to="/parts"><b>List Parts</b></Link> */}
+			    <Link to="/missingparts"><b>Missing Parts</b></Link>
+			    <Link to="/labelparts"><b>Label Parts</b></Link>
+				<Link to="/resolvedparts"><b>Resolved Parts</b></Link>
+				<Link to="/createpart"><b>Create Part</b></Link>
+				<Link to="/editparts"><b>Edit Part</b></Link>
+			  </div>
 			</div>
 		  </div>
 		  <div>

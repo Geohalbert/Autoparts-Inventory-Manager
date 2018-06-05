@@ -18,10 +18,10 @@ class EditPart extends Component {
         errorEditFlagVisible: false,
         successEditFlagVisible: false,
       part: {
-        _id: 0,
+        _id: null,
         partNumber: "",
         location: "",
-        onHand: 0,
+        onHand: null,
         status: ""
         // memos: []
       },
