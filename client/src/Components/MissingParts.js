@@ -1,12 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import SearchPartsContainer from "../Containers/SearchPartsContainer";
+import EditPartsContainer from "../Containers/EditPartsContainer"
 
 function MissingParts(props) {
 
   let partDivs = null;
   if (props.parts) {
-    partDivs = props.parts;
+    partDivs = props.parts.filter(function (p) {
+      return !props.searchFilter ||
+      (props.searchFilter &&
+          p.partNumber.toString().indexOf(props.searchFilter)  > -1) || (props.searchFilter &&
+            p.location.toString().indexOf(props.searchFilter)  > -1);
+    })
   }
   const missingParts = [];
   for (let m=0; m<partDivs.length; m++) {
@@ -37,7 +43,8 @@ function MissingParts(props) {
         )}
       </div>
       <div style={{float: "right", width: "49%"}}>
-        <SearchPartsContainer />
+        <div><SearchPartsContainer /></div>
+        <div><EditPartsContainer /></div>
       </div>
   </div>
 );

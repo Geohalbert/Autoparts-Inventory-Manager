@@ -21,15 +21,21 @@ body {
   padding: 15;
   font-family: sans-serif;
 }
+.logo_img {
+    width: 40%;
+    height: auto;
+}
 #top {
-  background-image: url("http://media-dmg.assets-cdk.com/teams/repository/export/v/2/768/24e9889b410058274005056925fd3/76824e9889b410058274005056925fd3_700x0.jpg");
-  background-repeat: no-repeat;
-  background-position: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
 }
 #categories {
   display: flex;
   justify-content: space-between;
   width: 500px;
+  align-items: baseline;
 }
 #rows {
   display: flex;

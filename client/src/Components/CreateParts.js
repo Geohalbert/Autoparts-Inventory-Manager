@@ -170,7 +170,7 @@ class CreateParts extends React.Component {
               }} />
             </div>
             {onHandFlag}
-            <div className="dropdown">
+            <div className="dropdown" style={{width: "25%"}}>
             <center>Status:</center><Dropdown placeholder="Select status" fluid selection onChange={this.statusSelect} options={statusFields} />
             </div>
             <div><center><Button>Create</Button></center></div>
